@@ -6,18 +6,14 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 
 <img src="./assets/stats.svg" alt="700 contributions · 12 public repos · 4 things you can use · shipping since 2021" width="100%">
 
-<table>
-  <tr>
-    <td width="33.33%"><a href="https://trace-rosy-one.vercel.app"><img src="./assets/card-trace.svg" alt="Trace — your screen as a physical lightbox" width="100%"></a></td>
-    <td width="33.33%"><a href="https://github.com/Jackmod/iphonelocationspoof"><img src="./assets/card-spoofer.svg" alt="iPhone Spoofer — drives a real iPhone's GPS over USB" width="100%"></a></td>
-    <td width="33.33%"><a href="https://createownruneverything.vercel.app"><img src="./assets/card-coreplus.svg" alt="Core+ — membership hub for a streamer collective" width="100%"></a></td>
-  </tr>
-  <tr>
-    <td><a href="https://xtsy-portfolio.vercel.app"><img src="./assets/card-portfolio.svg" alt="Portfolio — eight case studies behind a scroll-driven view" width="100%"></a></td>
-    <td><a href="https://github.com/Jackmod/CRYPTONIX-DISCONTINUED"><img src="./assets/card-cryptonix.svg" alt="CRYPTONIX — Solana wallet tracker" width="100%"></a></td>
-    <td><a href="https://github.com/Jackmod/DISPATCH"><img src="./assets/card-dispatch.svg" alt="DISPATCH — one-click installer for LSPDFR" width="100%"></a></td>
-  </tr>
-</table>
+<p>
+<a href="https://trace-rosy-one.vercel.app"><img src="./assets/card-trace.svg" alt="Trace — your screen as a physical lightbox" width="32.6%"></a>
+<a href="https://github.com/Jackmod/iphonelocationspoof"><img src="./assets/card-spoofer.svg" alt="iPhone Spoofer — drives a real iPhone's GPS over USB" width="32.6%"></a>
+<a href="https://createownruneverything.vercel.app"><img src="./assets/card-coreplus.svg" alt="Core+ — membership hub for a streamer collective" width="32.6%"></a>
+<a href="https://xtsy-portfolio.vercel.app"><img src="./assets/card-portfolio.svg" alt="Portfolio — eight case studies behind a scroll-driven view" width="32.6%"></a>
+<a href="https://github.com/Jackmod/CRYPTONIX-DISCONTINUED"><img src="./assets/card-cryptonix.svg" alt="CRYPTONIX — Solana wallet tracker" width="32.6%"></a>
+<a href="https://github.com/Jackmod/DISPATCH"><img src="./assets/card-dispatch.svg" alt="DISPATCH — one-click installer for LSPDFR" width="32.6%"></a>
+</p>
 
 <img src="./assets/toolkit.svg" alt="Toolkit — languages, interface, backend and daily tools" width="100%">
 
