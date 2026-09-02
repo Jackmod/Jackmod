@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" fill="none" role="img" aria-label="xtsy — full-stack developer and UI designer">
+  <defs>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#171a1e"/>
+    </pattern>
+
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#c9f36d" stop-opacity="0"/>
+      <stop offset="45%"  stop-color="#c9f36d" stop-opacity="0.55"/>
+      <stop offset="50%"  stop-color="#eaffb0" stop-opacity="0.95"/>
+      <stop offset="55%"  stop-color="#c9f36d" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c9f36d" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="card">
+      <rect width="1200" height="330" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect width="1200" height="330" fill="#08090a"/>
+    <rect width="1200" height="330" fill="url(#dots)"/>
+    <rect width="1200" height="150" fill="url(#fade)"/>
+
+    <!-- the lens: a sweep that echoes the scroll-warp on my site -->
+    <g opacity="0.85">
+      <rect x="-260" y="0" width="260" height="330" fill="url(#lens)">
+        <animate attributeName="x" values="-260;1200" dur="7s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1" keyTimes="0;1"/>
+      </rect>
+    </g>
+
+    <!-- wordmark -->
+    <text x="64" y="196" font-family="'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif"
+          font-size="150" font-weight="800" letter-spacing="-7" fill="#f4f6f2">xtsy</text>
+
+    <!-- caret -->
+    <rect x="404" y="72" width="9" height="132" fill="#c9f36d">
+      <animate attributeName="opacity" values="1;1;0;0;1" dur="1.4s" repeatCount="indefinite"/>
+    </rect>
+
+    <text x="68" y="243" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace"
+          font-size="17.5" letter-spacing="5.4" fill="#7d8580">FULL-STACK DEVELOPER · UI DESIGNER</text>
+
+    <line x1="64" y1="272" x2="1136" y2="272" stroke="#1e2226" stroke-width="1"/>
+
+    <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="2.6" fill="#5f6864">
+      <text x="64"  y="300">SEATTLE, WA</text>
+      <text x="252" y="300">SHIPPING SINCE 2021</text>
+      <text x="520" y="300">17</text>
+    </g>
+
+    <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="2.6">
+      <circle cx="1064" cy="295" r="4" fill="#c9f36d">
+        <animate attributeName="opacity" values="1;0.25;1" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <text x="1080" y="300" fill="#c9f36d">OPEN TO WORK</text>
+    </g>
+
+    <rect x="0.5" y="0.5" width="1199" height="329" rx="18" fill="none" stroke="#1e2226"/>
+  </g>
+</svg>
