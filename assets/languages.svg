@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="152" viewBox="0 0 1200 152" fill="none" role="img" aria-label="Language share by bytes across 17 repositories: JavaScript 65.2 percent, CSS 16.2, TypeScript 7.3, C sharp 6.1, Python 2.5, HTML 2.5, other 0.3">
   <defs>
-    <clipPath id="bar"><rect x="0" y="34" width="1200" height="22" rx="11"/></clipPath>
+    <clipPath id="bar"><rect x="0" y="34" width="1148" height="22" rx="11"/></clipPath>
     <clipPath id="card"><rect width="1200" height="152" rx="14"/></clipPath>
   </defs>
 

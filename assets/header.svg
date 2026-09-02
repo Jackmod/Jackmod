@@ -35,6 +35,26 @@
       </g>
     </g>
 
+    <!-- lens profile: the same bulge my portfolio bends its thumbnails with,
+         drawn as a bell of vertical rules -->
+    <g stroke-linecap="round" stroke-width="2">
+      <line x1="790"  y1="130" x2="790"  y2="170" stroke="#1b2127"/>
+      <line x1="815"  y1="110" x2="815"  y2="190" stroke="#1e252b"/>
+      <line x1="840"  y1="94"  x2="840"  y2="206" stroke="#222b30"/>
+      <line x1="865"  y1="80"  x2="865"  y2="220" stroke="#273234"/>
+      <line x1="890"  y1="69"  x2="890"  y2="231" stroke="#2d3b34"/>
+      <line x1="915"  y1="61"  x2="915"  y2="239" stroke="#354731"/>
+      <line x1="940"  y1="57"  x2="940"  y2="243" stroke="#3d552d"/>
+      <line x1="965"  y1="55"  x2="965"  y2="245" stroke="#455f2a"/>
+      <line x1="990"  y1="57"  x2="990"  y2="243" stroke="#3d552d"/>
+      <line x1="1015" y1="61"  x2="1015" y2="239" stroke="#354731"/>
+      <line x1="1040" y1="69"  x2="1040" y2="231" stroke="#2d3b34"/>
+      <line x1="1065" y1="80"  x2="1065" y2="220" stroke="#273234"/>
+      <line x1="1090" y1="94"  x2="1090" y2="206" stroke="#222b30"/>
+      <line x1="1115" y1="110" x2="1115" y2="190" stroke="#1e252b"/>
+      <line x1="1140" y1="130" x2="1140" y2="170" stroke="#1b2127"/>
+    </g>
+
     <!-- wordmark -->
     <text x="62" y="178" font-family="'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif"
           font-size="138" font-weight="800" letter-spacing="-6.5" fill="#f6f8f4">xtsy</text>
