@@ -44,9 +44,9 @@
     <rect x="973" y="111" width="64" height="85" rx="9" fill="#ff8a1f" stroke="#12100c" stroke-width="3.5"/>
     <text x="1005" y="99" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">121</text>
     <text x="1005" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">AUG</text>
-    <rect x="1068" y="177" width="64" height="24" rx="9" fill="#12100c"/>
-    <rect x="1063" y="172" width="64" height="24" rx="9" fill="#ffc400" stroke="#12100c" stroke-width="3.5"/>
-    <text x="1095" y="160" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">34</text>
+    <rect x="1068" y="173" width="64" height="28" rx="9" fill="#12100c"/>
+    <rect x="1063" y="168" width="64" height="28" rx="9" fill="#ffc400" stroke="#12100c" stroke-width="3.5"/>
+    <text x="1095" y="156" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">40</text>
     <text x="1095" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">SEP</text>
   </g>
   <rect x="8" y="6" width="1176" height="228" rx="22" fill="none" stroke="#12100c" stroke-width="5"/>
