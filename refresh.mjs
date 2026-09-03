@@ -87,7 +87,7 @@ legend += `    <text x="${lx + 158}" y="${HH - 34}" font-family="${MONO}" font-s
 const stamp = new Date().toISOString().slice(0, 10);
 const head = `    <text x="42" y="48" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="3" fill="${INK}">STILL SHIPPING &#183; LAST 12 MONTHS</text>
     <text x="1150" y="48" text-anchor="end" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.55">${cal.totalContributions} CONTRIBUTIONS &#183; ${activeDays} ACTIVE DAYS &#183; ${busiest} IN A DAY</text>
-    <text x="1150" y="${HH - 34}" text-anchor="end" font-family="${MONO}" font-size="10" letter-spacing="1.2" fill="${INK}" opacity="0.3">REBUILT ${stamp}</text>\n`;
+    <text x="42" y="${HH - 34}" font-family="${MONO}" font-size="10" letter-spacing="1.2" fill="${INK}" opacity="0.3">REBUILT ${stamp} &#183; DAILY, BY WORKFLOW</text>\n`;
 
 writeFileSync(`${OUT}/heatmap.svg`, card(1200, HH, head + months + labels + cells + legend, { id: 'h' }));
 
