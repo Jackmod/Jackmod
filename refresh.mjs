@@ -121,5 +121,55 @@ writeFileSync(`${OUT}/stats.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width
 ${s}</svg>
 `);
 
+/* --------------------------------------------------------------- activity */
+
+/**
+ * The heatmap answers "how often"; this answers "how much, and when".
+ * Same twelve months, aggregated into bars, so a reader gets the shape of the
+ * year without counting squares.
+ */
+const byMonth = new Map();
+for (const d of days) {
+  const key = d.date.slice(0, 7);
+  byMonth.set(key, (byMonth.get(key) ?? 0) + d.contributionCount);
+}
+// Drop the partial month at each end so no bar is unfairly short.
+const monthKeys = [...byMonth.keys()].sort().slice(-12);
+const peakMonth = Math.max(...monthKeys.map((k) => byMonth.get(k)));
+
+const AW = 1200, AH = 250, AL = 60, AR = 60, ABASE = 196, ATOP = 74;
+const slot = (AW - AL - AR) / monthKeys.length;
+const barW = Math.min(64, slot - 14);
+
+let bars = '';
+monthKeys.forEach((k, i) => {
+  const v = byMonth.get(k);
+  const h = peakMonth ? Math.round(((ABASE - ATOP) * v) / peakMonth) : 0;
+  const x = Math.round(AL + i * slot + (slot - barW) / 2);
+  const y = ABASE - h;
+  const [yy, mm] = k.split('-');
+  const label = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][+mm - 1];
+  const fill = v === 0 ? '#e6dcc4' : v >= peakMonth * 0.75 ? '#ff3b30' : v >= peakMonth * 0.4 ? '#ff8a1f' : '#ffc400';
+  if (h > 3) {
+    bars += `    <rect x="${x + 5}" y="${y + 5}" width="${barW}" height="${h}" rx="9" fill="${INK}"/>\n`;
+    bars += `    <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="9" fill="${fill}" stroke="${INK}" stroke-width="3.5"/>\n`;
+    bars += `    <text x="${x + barW / 2}" y="${y - 12}" text-anchor="middle" font-family="${MONO}" font-size="13" font-weight="700" fill="${INK}">${v}</text>\n`;
+  } else {
+    bars += `    <rect x="${x}" y="${ABASE - 4}" width="${barW}" height="4" rx="2" fill="#ded3b8"/>\n`;
+  }
+  bars += `    <text x="${x + barW / 2}" y="${ABASE + 24}" text-anchor="middle" font-family="${MONO}" font-size="11" font-weight="700" letter-spacing="1.2" fill="${INK}" opacity="${v ? 0.75 : 0.35}">${label}</text>\n`;
+  if (label === 'JAN' || i === 0) {
+    bars += `    <text x="${x + barW / 2}" y="${ABASE + 40}" text-anchor="middle" font-family="${MONO}" font-size="9.5" font-weight="700" letter-spacing="1" fill="${INK}" opacity="0.35">${yy}</text>\n`;
+  }
+});
+
+const busiestMonth = monthKeys.reduce((a, b) => (byMonth.get(b) > byMonth.get(a) ? b : a));
+const ahead = `    <text x="42" y="44" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="3" fill="${INK}">THE SHAPE OF THE YEAR</text>
+    <text x="1150" y="44" text-anchor="end" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.55">BUSIEST MONTH &#183; ${busiestMonth} &#183; ${peakMonth} CONTRIBUTIONS</text>
+    <line x1="42" y1="${ABASE}" x2="1158" y2="${ABASE}" stroke="${INK}" stroke-width="3"/>\n`;
+
+writeFileSync(`${OUT}/activity.svg`, card(AW, AH, ahead + bars, { id: 'a' }));
+
+console.log(`activity: peak ${peakMonth} in ${busiestMonth}`);
 console.log(`heatmap: ${cal.totalContributions} in last year, ${activeDays} active, peak ${busiest}`);
 console.log(`stats:   ${allTime} all-time since ${since}, ${repos} public repos, ${stars} stars`);

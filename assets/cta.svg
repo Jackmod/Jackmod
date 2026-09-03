@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="210" viewBox="0 0 1200 210" fill="none" role="img" aria-label="See the work at xtsy-portfolio.vercel.app">
+  <defs>
+    <clipPath id="cta"><rect x="8" y="6" width="1176" height="188" rx="24"/></clipPath>
+    <clipPath id="band"><rect x="8" y="152" width="1176" height="42"/></clipPath>
+  </defs>
+
+  <rect x="16" y="18" width="1176" height="188" rx="24" fill="#12100c"/>
+
+  <g clip-path="url(#cta)">
+    <rect x="8" y="6" width="1176" height="188" fill="#12100c"/>
+
+    <rect x="555" y="39" width="10" height="10" rx="2" transform="rotate(45 560 44)" fill="#ffc400"/>
+    <rect x="595" y="91" width="10" height="10" rx="2" transform="rotate(45 600 96)" fill="#ff3b30"/>
+    <rect x="519" y="113" width="10" height="10" rx="2" transform="rotate(45 524 118)" fill="#2f9bff"/>
+
+    <text x="46" y="86" font-family="'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="62" font-weight="800" letter-spacing="-2.4" fill="#fbf4e2">See the work</text>
+    <text x="50" y="120" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="15" font-weight="700" letter-spacing="2" fill="#ffc400">xtsy-portfolio.vercel.app</text>
+
+    <g transform="translate(1064,84)">
+      <circle r="52" fill="#ffc400" stroke="#fbf4e2" stroke-width="4"/>
+      <g stroke="#12100c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M-16,16 L16,-16 M-6,-16 L16,-16 L16,6"/>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 7,-7; 0,0" dur="2.4s" repeatCount="indefinite"
+          calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/>
+      </g>
+    </g>
+
+    <rect x="8" y="152" width="1176" height="42" fill="#ffc400"/>
+    <g clip-path="url(#band)">
+      <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="16" font-weight="700" letter-spacing="3" fill="#12100c">
+        <text x="0" y="180">SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   </text>
+        <text x="1647" y="180">SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   </text>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; -1647,0" dur="28.4s" repeatCount="indefinite"/>
+      </g>
+    </g>
+  </g>
+
+  <rect x="8" y="6" width="1176" height="188" rx="24" fill="none" stroke="#fbf4e2" stroke-width="5"/>
+</svg>

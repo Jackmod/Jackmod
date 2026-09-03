@@ -147,3 +147,134 @@ const head = `    <text x="${PAD}" y="44" font-family="${MONO}" font-size="12.5"
 writeFileSync(`${OUT}/toolkit.svg`, card(1200, TH, head + body, { id: 't' }));
 
 console.log(`wrote ${cards.length} cards + toolkit.svg (h=${TH})`);
+
+/* ------------------------------------------------------------------ timeline */
+
+/**
+ * Six months of shipping, on a real date axis.
+ *
+ * Dates are the repository creation dates from the API, not a story told
+ * afterwards. Labels alternate above and below the rule because at this
+ * density they would otherwise collide.
+ */
+const ships = [
+  { date: '2026-04-04', name: 'torusdata',      note: 'data platform',      c: '#a855f7' },
+  { date: '2026-06-30', name: 'Auto Clicker',   note: 'desktop automation', c: '#3ddc84' },
+  { date: '2026-07-20', name: 'DISPATCH',       note: 'one-click installer', c: '#ffc400' },
+  { date: '2026-07-27', name: 'Portfolio',      note: 'eight case studies', c: '#2f9bff' },
+  { date: '2026-08-02', name: 'Core+',          note: 'membership hub',     c: '#ff3b30' },
+  { date: '2026-08-08', name: 'iPhone Spoofer', note: 'GPS over USB',       c: '#a855f7' },
+  { date: '2026-08-16', name: 'Trace',          note: 'screen as lightbox', c: '#ffc400' },
+  { date: '2026-08-31', name: 'CRYPTONIX',      note: 'wallet tracker',     c: '#3ddc84' },
+  { date: '2026-09-02', name: 'verbatim',       note: 'transcription',      c: '#2f9bff' },
+];
+
+const t0 = Date.parse('2026-03-25'), t1 = Date.parse('2026-09-10');
+const TL = 92, TR = 1120, TAXIS = 172, TLH = 320;
+const tx = (d) => TL + ((Date.parse(d) - t0) / (t1 - t0)) * (TR - TL);
+
+let ticks = '';
+for (const [m, lbl] of [['2026-04-01','APR'],['2026-05-01','MAY'],['2026-06-01','JUN'],['2026-07-01','JUL'],['2026-08-01','AUG'],['2026-09-01','SEP']]) {
+  ticks += `    <line x1="${tx(m).toFixed(1)}" y1="${TAXIS - 8}" x2="${tx(m).toFixed(1)}" y2="${TAXIS + 8}" stroke="${INK}" stroke-width="2.5" opacity="0.35"/>
+    <text x="${tx(m).toFixed(1)}" y="${TAXIS + 30}" text-anchor="middle" font-family="${MONO}" font-size="11" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.45">${lbl}</text>\n`;
+}
+
+/**
+ * Lane packing.
+ *
+ * Nine ships inside six months put labels on top of each other — August alone
+ * has four. Each label claims the first lane whose last occupant has already
+ * ended, alternating above and below the rule so the axis stays balanced.
+ */
+const LANES = [
+  { dir: -1, name: TAXIS - 42, note: TAXIS - 58, stem: TAXIS - 26, end: -1e9 },
+  { dir: 1,  name: TAXIS + 56, note: TAXIS + 72, stem: TAXIS + 40, end: -1e9 },
+  { dir: -1, name: TAXIS - 82, note: TAXIS - 98, stem: TAXIS - 66, end: -1e9 },
+  { dir: 1,  name: TAXIS + 96, note: TAXIS + 112, stem: TAXIS + 80, end: -1e9 },
+];
+
+let marks = '';
+for (const s of ships) {
+  const x = tx(s.date);
+  const w = Math.max(s.name.length, s.note.length) * 6.6 + 14;
+  const lane = LANES.find((l) => x - w / 2 > l.end) ?? LANES[LANES.length - 1];
+  lane.end = x + w / 2;
+
+  marks += `    <line x1="${x.toFixed(1)}" y1="${TAXIS}" x2="${x.toFixed(1)}" y2="${lane.stem}" stroke="${INK}" stroke-width="3"/>
+    <circle cx="${x.toFixed(1)}" cy="${TAXIS}" r="9" fill="${s.c}" stroke="${INK}" stroke-width="3.5"/>
+    <text x="${x.toFixed(1)}" y="${lane.name}" text-anchor="middle" font-family="${MONO}" font-size="12.5" font-weight="700" fill="${INK}">${esc(s.name)}</text>
+    <text x="${x.toFixed(1)}" y="${lane.note}" text-anchor="middle" font-family="${MONO}" font-size="10" letter-spacing="0.6" fill="${INK}" opacity="0.5">${esc(s.note)}</text>\n`;
+}
+
+const thead = `    <text x="42" y="44" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="3" fill="${INK}">THE 2026 RUN &#183; NINE THINGS SHIPPED</text>
+    <text x="1150" y="44" text-anchor="end" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.55">APR &#8594; SEP</text>
+    <line x1="${TL - 34}" y1="${TAXIS}" x2="${TR + 34}" y2="${TAXIS}" stroke="${INK}" stroke-width="4"/>\n`;
+
+writeFileSync(`${OUT}/timeline.svg`, card(1200, TLH, thead + ticks + marks, { id: 'l' }));
+console.log('wrote timeline.svg');
+
+/* ----------------------------------------------------------------- the call */
+
+/**
+ * The one thing the page is actually asking you to do.
+ *
+ * The marquee is two copies of the same strip translated by exactly one strip
+ * width: when the animation loops the second copy is sitting where the first
+ * began, so the seam never lands anywhere visible.
+ */
+const URL_TEXT = 'xtsy-portfolio.vercel.app';
+const TICKER = 'SEE THE WORK';
+const DIAMOND = (x, y, c) => `<rect x="${x - 5}" y="${y - 5}" width="10" height="10" rx="2" transform="rotate(45 ${x} ${y})" fill="${c}"/>`;
+
+const CH2 = 9.65;                       // mono advance at 16px
+const unit = `${TICKER}   ◆   `;
+const unitW = Math.round(unit.length * CH2);
+const reps = Math.ceil(1400 / unitW) + 1;
+const strip = unit.repeat(reps);
+const stripW = unitW * reps;
+
+const CTAH = 210;
+const cta = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="${CTAH}" viewBox="0 0 1200 ${CTAH}" fill="none" role="img" aria-label="See the work at ${URL_TEXT}">
+  <defs>
+    <clipPath id="cta"><rect x="8" y="6" width="1176" height="${CTAH - 22}" rx="24"/></clipPath>
+    <clipPath id="band"><rect x="8" y="${CTAH - 58}" width="1176" height="42"/></clipPath>
+  </defs>
+
+  <rect x="16" y="18" width="1176" height="${CTAH - 22}" rx="24" fill="${INK}"/>
+
+  <g clip-path="url(#cta)">
+    <rect x="8" y="6" width="1176" height="${CTAH - 22}" fill="${INK}"/>
+
+    ${DIAMOND(560, 44, '#ffc400')}
+    ${DIAMOND(600, 96, '#ff3b30')}
+    ${DIAMOND(524, 118, '#2f9bff')}
+
+    <text x="46" y="86" font-family="${DISPLAY}" font-size="62" font-weight="800" letter-spacing="-2.4" fill="${CREAM}">See the work</text>
+    <text x="50" y="120" font-family="${MONO}" font-size="15" font-weight="700" letter-spacing="2" fill="#ffc400">${URL_TEXT}</text>
+
+    <g transform="translate(1064,84)">
+      <circle r="52" fill="#ffc400" stroke="${CREAM}" stroke-width="4"/>
+      <g stroke="${INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M-16,16 L16,-16 M-6,-16 L16,-16 L16,6"/>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 7,-7; 0,0" dur="2.4s" repeatCount="indefinite"
+          calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/>
+      </g>
+    </g>
+
+    <rect x="8" y="${CTAH - 58}" width="1176" height="42" fill="#ffc400"/>
+    <g clip-path="url(#band)">
+      <g font-family="${MONO}" font-size="16" font-weight="700" letter-spacing="3" fill="${INK}">
+        <text x="0" y="${CTAH - 30}">${strip}</text>
+        <text x="${stripW}" y="${CTAH - 30}">${strip}</text>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; -${stripW},0" dur="${(stripW / 58).toFixed(1)}s" repeatCount="indefinite"/>
+      </g>
+    </g>
+  </g>
+
+  <rect x="8" y="6" width="1176" height="${CTAH - 22}" rx="24" fill="none" stroke="${CREAM}" stroke-width="5"/>
+</svg>
+`;
+writeFileSync(`${OUT}/cta.svg`, cta);
+console.log('wrote cta.svg');
