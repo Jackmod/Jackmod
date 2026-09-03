@@ -8,7 +8,7 @@
     <rect x="8" y="6" width="1176" height="276" fill="#fbf4e2"/>
     <rect x="8" y="6" width="1176" height="276" fill="url(#dots-h)"/>
     <text x="42" y="48" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="3" fill="#12100c">STILL SHIPPING &#183; LAST 12 MONTHS</text>
-    <text x="1150" y="48" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="#12100c" opacity="0.55">609 CONTRIBUTIONS &#183; 62 ACTIVE DAYS &#183; 65 IN A DAY</text>
+    <text x="1150" y="48" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="#12100c" opacity="0.55">615 CONTRIBUTIONS &#183; 62 ACTIVE DAYS &#183; 65 IN A DAY</text>
     <text x="42" y="264" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10" letter-spacing="1.2" fill="#12100c" opacity="0.3">REBUILT 2026-09-03 &#183; DAILY, BY WORKFLOW</text>
     <text x="88" y="80" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#12100c" opacity="0.45">AUG</text>
     <text x="128" y="80" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#12100c" opacity="0.45">SEP</text>
@@ -394,7 +394,7 @@
     <rect x="1128" y="112" width="16" height="16" rx="4" fill="#ff3b30" stroke="#12100c" stroke-width="1.5"><title>2026-08-31: 55</title></rect>
     <rect x="1128" y="132" width="16" height="16" rx="4" fill="#ff3b30" stroke="#12100c" stroke-width="1.5"><title>2026-09-01: 21</title></rect>
     <rect x="1128" y="152" width="16" height="16" rx="4" fill="#ffc400" stroke="#12100c" stroke-width="1.5"><title>2026-09-02: 3</title></rect>
-    <rect x="1128" y="172" width="16" height="16" rx="4" fill="#ff8a1f" stroke="#12100c" stroke-width="1.5"><title>2026-09-03: 10</title></rect>
+    <rect x="1128" y="172" width="16" height="16" rx="4" fill="#ff3b30" stroke="#12100c" stroke-width="1.5"><title>2026-09-03: 16</title></rect>
     <text x="952" y="264" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#12100c" opacity="0.45">LESS</text>
     <rect x="996" y="253" width="15" height="15" rx="4" fill="#e6dcc4"/>
     <rect x="1017" y="253" width="15" height="15" rx="4" fill="#ffe27a" stroke="#12100c" stroke-width="1.5"/>
