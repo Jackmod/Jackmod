@@ -35,7 +35,6 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 
 <br>
 
-**How I work.** The detail is the job — a 3% scale pop on a scrolling thumbnail is a bug, and I'll lose an afternoon proving where it came from. I measure rather than eyeball; if I say it's fixed, there are numbers out of a real browser behind it. I read the source instead of guessing, because it's faster every time. Then I ship it and look at it on a real device, because localhost lies.
 
 <a href="https://xtsy-portfolio.vercel.app"><img src="./assets/cta.svg" alt="See the work at xtsy-portfolio.vercel.app" width="100%"></a>
 
