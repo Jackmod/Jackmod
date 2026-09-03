@@ -1,4 +1,5 @@
 import { writeFileSync, mkdirSync } from 'fs';
+import { execFileSync } from 'child_process';
 
 const OUT = 'C:/Users/jackb/AppData/Local/Temp/gh-profile/assets';
 mkdirSync(OUT, { recursive: true });
@@ -126,4 +127,84 @@ ${body}  </g>
 `;
 writeFileSync(`${OUT}/toolkit.svg`, toolkit);
 
-console.log('wrote 6 cards + toolkit.svg (h=' + TH + ')');
+/* ------------------------------------------------------------------- heatmap */
+
+/**
+ * GitHub pins the contribution graph below the pinned repos and gives you no
+ * way to move it, so the profile buries the one thing that shows steady work.
+ * This draws the same calendar from the real API, in the same ink and cream as
+ * everything else, and sits wherever the README puts it.
+ */
+const gql = `query { user(login: "Jackmod") { contributionsCollection { contributionCalendar {
+  totalContributions weeks { firstDay contributionDays { date contributionCount weekday } } } } } }`;
+
+// execFileSync, not a shell string: nothing here is interpolated from input,
+// but the query carries quotes and braces that a shell would happily mangle.
+const raw = execFileSync('gh', ['api', 'graphql', '-f', `query=${gql}`], { maxBuffer: 1 << 24 }).toString();
+const cal = JSON.parse(raw).data.user.contributionsCollection.contributionCalendar;
+const weeks = cal.weeks;
+const allDays = weeks.flatMap((w) => w.contributionDays);
+const activeDays = allDays.filter((d) => d.contributionCount > 0).length;
+const busiest = Math.max(...allDays.map((d) => d.contributionCount));
+
+// Warm ramp rather than GitHub green, so it belongs to the same palette.
+const RAMP = ['#e6dcc4', '#ffe27a', '#ffc400', '#ff8a1f', '#ff3b30'];
+const level = (n) => (n === 0 ? 0 : n <= 2 ? 1 : n <= 6 ? 2 : n <= 15 ? 3 : 4);
+
+const CELL = 16, GAPC = 4, STEP = CELL + GAPC;
+const LEFT = 88, TOP = 92;
+const HW = 1200, HH = TOP + 7 * STEP + 66;
+
+let cells = '';
+let months = '';
+let lastMonth = -1;
+let lastMonthX = -999;
+
+weeks.forEach((wk, wi) => {
+  for (const d of wk.contributionDays) {
+    const x = LEFT + wi * STEP;
+    const y = TOP + d.weekday * STEP;
+    const l = level(d.contributionCount);
+    cells += `    <rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="4" fill="${RAMP[l]}"${l ? ` stroke="${INK}" stroke-width="1.5"` : ''}><title>${d.date}: ${d.contributionCount}</title></rect>\n`;
+  }
+  const m = new Date(wk.firstDay + 'T00:00:00Z').getUTCMonth();
+  const mx = LEFT + wi * STEP;
+  // Two month starts inside the same handful of pixels overprint each other.
+  if (m !== lastMonth && wi < weeks.length - 1 && mx - lastMonthX >= 40) {
+    lastMonth = m;
+    lastMonthX = mx;
+    const name = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][m];
+    months += `    <text x="${mx}" y="${TOP - 12}" font-family="${MONO}" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="${INK}" opacity="0.45">${name}</text>\n`;
+  }
+});
+
+let dayLabels = '';
+[['Mon', 1], ['Wed', 3], ['Fri', 5]].forEach(([lbl, i]) => {
+  dayLabels += `    <text x="${LEFT - 14}" y="${TOP + i * STEP + 11.5}" text-anchor="end" font-family="${MONO}" font-size="10.5" font-weight="700" fill="${INK}" opacity="0.45">${lbl}</text>\n`;
+});
+
+const legendX = LEFT + weeks.length * STEP - 196;
+let legend = `    <text x="${legendX}" y="${HH - 34}" font-family="${MONO}" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="${INK}" opacity="0.45">LESS</text>\n`;
+RAMP.forEach((c, i) => {
+  legend += `    <rect x="${legendX + 44 + i * 21}" y="${HH - 45}" width="15" height="15" rx="4" fill="${c}"${i ? ` stroke="${INK}" stroke-width="1.5"` : ''}/>\n`;
+});
+legend += `    <text x="${legendX + 158}" y="${HH - 34}" font-family="${MONO}" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="${INK}" opacity="0.45">MORE</text>\n`;
+
+const heat = `<svg xmlns="http://www.w3.org/2000/svg" width="${HW}" height="${HH}" viewBox="0 0 ${HW} ${HH}" fill="none" role="img" aria-label="${cal.totalContributions} contributions in the last year across ${activeDays} active days">
+  <defs><pattern id="gh" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#e3d9bf"/></pattern>
+  <clipPath id="ch"><rect x="8" y="6" width="1176" height="${HH - 22}" rx="22"/></clipPath></defs>
+  <rect x="16" y="18" width="1176" height="${HH - 22}" rx="22" fill="${INK}"/>
+  <g clip-path="url(#ch)">
+    <rect x="8" y="6" width="1176" height="${HH - 22}" fill="${CREAM}"/>
+    <rect x="8" y="6" width="1176" height="${HH - 22}" fill="url(#gh)"/>
+
+    <text x="42" y="48" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="3" fill="${INK}">STILL SHIPPING &#183; LAST 12 MONTHS</text>
+    <text x="1150" y="48" text-anchor="end" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.55">${cal.totalContributions} CONTRIBUTIONS &#183; ${activeDays} ACTIVE DAYS &#183; ${busiest} IN A DAY</text>
+
+${months}${dayLabels}${cells}${legend}  </g>
+  <rect x="8" y="6" width="1176" height="${HH - 22}" rx="22" fill="none" stroke="${INK}" stroke-width="5"/>
+</svg>
+`;
+writeFileSync(`${OUT}/heatmap.svg`, heat);
+
+console.log('wrote 6 cards + toolkit.svg (h=' + TH + ') + heatmap.svg (h=' + HH + ', ' + cal.totalContributions + ' contributions)');

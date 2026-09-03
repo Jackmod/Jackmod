@@ -6,6 +6,8 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 
 <img src="./assets/stats.svg" alt="700 contributions · 12 public repos · 4 things you can use · shipping since 2021" width="100%">
 
+<img src="./assets/heatmap.svg" alt="Contribution heatmap for the last 12 months" width="100%">
+
 <p>
 <a href="https://trace-rosy-one.vercel.app"><img src="./assets/card-trace.svg" alt="Trace — your screen as a physical lightbox" width="32.6%"></a>
 <a href="https://github.com/Jackmod/iphonelocationspoof"><img src="./assets/card-spoofer.svg" alt="iPhone Spoofer — drives a real iPhone's GPS over USB" width="32.6%"></a>
