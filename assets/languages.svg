@@ -1,42 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="176" viewBox="0 0 1200 176" fill="none" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="152" viewBox="0 0 1200 152" fill="none" role="img">
   <defs>
-    <pattern id="dots-g" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#e3d9bf"/></pattern>
-    <clipPath id="clip-g"><rect x="8" y="6" width="1176" height="154" rx="22"/></clipPath>
+    <linearGradient id="lit-lg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF7A5C" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#FF7A5C" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#FF7A5C" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FF7A5C" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip-lg"><rect x="1" y="1" width="1198" height="150" rx="16"/></clipPath>
   </defs>
-  <rect x="16" y="18" width="1176" height="154" rx="22" fill="#12100c"/>
-  <g clip-path="url(#clip-g)">
-    <rect x="8" y="6" width="1176" height="154" fill="#fbf4e2"/>
-    <rect x="8" y="6" width="1176" height="154" fill="url(#dots-g)"/>
-    <text x="42" y="40" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="2.6" fill="#12100c">WHAT THE BYTES SAY &#183; 27 REPOS</text>
-    <defs><clipPath id="lbar"><rect x="0" y="52" width="1116" height="30" rx="15"/></clipPath></defs>
-    <g clip-path="url(#lbar)" transform="translate(42,0)">
-      <rect x="0" y="52" width="753" height="30" fill="#f7df1e"/>
-      <rect x="753" y="52" width="167" height="30" fill="#a855f7"/>
-      <rect x="920" y="52" width="74" height="30" fill="#2f9bff"/>
-      <rect x="994" y="52" width="62" height="30" fill="#3ddc84"/>
-      <rect x="1056" y="52" width="31" height="30" fill="#ff3b30"/>
-      <rect x="1087" y="52" width="26" height="30" fill="#4b8bbe"/>
-      <rect x="1113" y="52" width="3" height="30" fill="#8a8578"/>
-      <rect x="-1116" y="52" width="1116" height="30" fill="#fbf4e2">
-        <animate attributeName="x" values="0;-1116" dur="1.3s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1" keyTimes="0;1"/>
-      </rect>
+  <g clip-path="url(#clip-lg)">
+    <rect x="1" y="1" width="1198" height="150" fill="#14171C"/>
+    <rect x="1" y="1" width="1198" height="1.5" fill="url(#lit-lg)"/>
+    <text x="34" y="36" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" letter-spacing="3" fill="#F3F5F4">WHAT THE BYTES SAY</text>
+    <text x="1166" y="36" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" letter-spacing="1.6" fill="#5A626C">27 REPOSITORIES · 43.4 MB COUNTED</text>
+    <rect x="34" y="56" width="1132" height="14" rx="7" fill="#1A1E25"/>
+    <g transform="translate(34,0)">
+      <rect x="0" y="56" width="762" height="14" rx="7" fill="#E8D44D"/>
+      <rect x="764" y="56" width="167" height="14" rx="7" fill="#A78BFA"/>
+      <rect x="933" y="56" width="74" height="14" rx="7" fill="#6C8BFF"/>
+      <rect x="1009" y="56" width="61" height="14" rx="7" fill="#35D6A4"/>
+      <rect x="1072" y="56" width="29" height="14" rx="7" fill="#FF7A5C"/>
+      <rect x="1103" y="56" width="24" height="14" rx="7" fill="#6FA8DC"/>
+      <rect x="1129" y="56" width="2" height="14" rx="7" fill="#5A626C"/>
     </g>
-    <rect x="42" y="52" width="1116" height="30" rx="15" fill="none" stroke="#12100c" stroke-width="4"/>
-    <rect x="42" y="102" width="14" height="14" rx="4" fill="#f7df1e" stroke="#12100c" stroke-width="2.5"/>
-    <text x="64" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">JavaScript 67.5%</text>
-    <rect x="204.4" y="102" width="14" height="14" rx="4" fill="#a855f7" stroke="#12100c" stroke-width="2.5"/>
-    <text x="226.4" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">CSS 14.9%</text>
-    <rect x="311.5" y="102" width="14" height="14" rx="4" fill="#2f9bff" stroke="#12100c" stroke-width="2.5"/>
-    <text x="333.5" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">TypeScript 6.7%</text>
-    <rect x="466" y="102" width="14" height="14" rx="4" fill="#3ddc84" stroke="#12100c" stroke-width="2.5"/>
-    <text x="488" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">C# 5.6%</text>
-    <rect x="557.3" y="102" width="14" height="14" rx="4" fill="#ff3b30" stroke="#12100c" stroke-width="2.5"/>
-    <text x="579.3" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">HTML 2.7%</text>
-    <rect x="664.4" y="102" width="14" height="14" rx="4" fill="#4b8bbe" stroke="#12100c" stroke-width="2.5"/>
-    <text x="686.4" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">Python 2.3%</text>
-    <rect x="787.3" y="102" width="14" height="14" rx="4" fill="#8a8578" stroke="#12100c" stroke-width="2.5"/>
-    <text x="809.3" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">the rest 0.2%</text>
-    <text x="42" y="146" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11.5" fill="#6b6455">Bytes reward whoever ships the most files, so this is honest rather than flattering. What I reach for is above.</text>
+    <circle cx="39" cy="102" r="5" fill="#E8D44D"/>
+    <text x="52" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">JavaScript 67.5%</text>
+    <circle cx="185.8" cy="102" r="5" fill="#A78BFA"/>
+    <text x="198.8" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">CSS 14.9%</text>
+    <circle cx="281.5" cy="102" r="5" fill="#6C8BFF"/>
+    <text x="294.5" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">TypeScript 6.7%</text>
+    <circle cx="421" cy="102" r="5" fill="#35D6A4"/>
+    <text x="434" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">C# 5.6%</text>
+    <circle cx="502.1" cy="102" r="5" fill="#FF7A5C"/>
+    <text x="515.1" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">HTML 2.7%</text>
+    <circle cx="597.8000000000001" cy="102" r="5" fill="#6FA8DC"/>
+    <text x="610.8000000000001" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">Python 2.3%</text>
+    <circle cx="708.1" cy="102" r="5" fill="#5A626C"/>
+    <text x="721.1" y="106" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#8A939E">the rest 0.2%</text>
+    <text x="34" y="134" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" fill="#5A626C">Bytes reward whoever ships the most files, so this is honest rather than flattering. What I reach for is above.</text>
   </g>
-  <rect x="8" y="6" width="1176" height="154" rx="22" fill="none" stroke="#12100c" stroke-width="5"/>
+  <rect x="1" y="1" width="1198" height="150" rx="16" fill="none" stroke="#272D36" stroke-width="1.5"/>
 </svg>

@@ -1,53 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250" fill="none" role="img">
   <defs>
-    <pattern id="dots-a" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#e3d9bf"/></pattern>
-    <clipPath id="clip-a"><rect x="8" y="6" width="1176" height="228" rx="22"/></clipPath>
+    <linearGradient id="lit-a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6C8BFF" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#6C8BFF" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#6C8BFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#6C8BFF" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip-a"><rect x="1" y="1" width="1198" height="248" rx="16"/></clipPath>
   </defs>
-  <rect x="16" y="18" width="1176" height="228" rx="22" fill="#12100c"/>
   <g clip-path="url(#clip-a)">
-    <rect x="8" y="6" width="1176" height="228" fill="#fbf4e2"/>
-    <rect x="8" y="6" width="1176" height="228" fill="url(#dots-a)"/>
-    <text x="42" y="44" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="3" fill="#12100c">THE SHAPE OF THE YEAR</text>
-    <text x="1150" y="44" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="#12100c" opacity="0.55">BUSIEST MONTH &#183; 2026-07 &#183; 173 CONTRIBUTIONS</text>
-    <line x1="42" y1="196" x2="1158" y2="196" stroke="#12100c" stroke-width="3"/>
-    <rect x="73" y="192" width="64" height="4" rx="2" fill="#ded3b8"/>
-    <text x="105" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.35">OCT</text>
-    <text x="105" y="236" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="1" fill="#12100c" opacity="0.35">2025</text>
-    <rect x="163" y="192" width="64" height="4" rx="2" fill="#ded3b8"/>
-    <text x="195" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.35">NOV</text>
-    <rect x="253" y="192" width="64" height="4" rx="2" fill="#ded3b8"/>
-    <text x="285" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.35">DEC</text>
-    <rect x="343" y="192" width="64" height="4" rx="2" fill="#ded3b8"/>
-    <text x="375" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.35">JAN</text>
-    <text x="375" y="236" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="1" fill="#12100c" opacity="0.35">2026</text>
-    <rect x="433" y="192" width="64" height="4" rx="2" fill="#ded3b8"/>
-    <text x="465" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.35">FEB</text>
-    <rect x="523" y="192" width="64" height="4" rx="2" fill="#ded3b8"/>
-    <text x="555" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.35">MAR</text>
-    <rect x="618" y="163" width="64" height="38" rx="9" fill="#12100c"/>
-    <rect x="613" y="158" width="64" height="38" rx="9" fill="#ffc400" stroke="#12100c" stroke-width="3.5"/>
-    <text x="645" y="146" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">54</text>
-    <text x="645" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">APR</text>
-    <rect x="708" y="86" width="64" height="115" rx="9" fill="#12100c"/>
-    <rect x="703" y="81" width="64" height="115" rx="9" fill="#ff3b30" stroke="#12100c" stroke-width="3.5"/>
-    <text x="735" y="69" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">163</text>
-    <text x="735" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">MAY</text>
-    <rect x="798" y="156" width="64" height="45" rx="9" fill="#12100c"/>
-    <rect x="793" y="151" width="64" height="45" rx="9" fill="#ffc400" stroke="#12100c" stroke-width="3.5"/>
-    <text x="825" y="139" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">64</text>
-    <text x="825" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">JUN</text>
-    <rect x="888" y="79" width="64" height="122" rx="9" fill="#12100c"/>
-    <rect x="883" y="74" width="64" height="122" rx="9" fill="#ff3b30" stroke="#12100c" stroke-width="3.5"/>
-    <text x="915" y="62" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">173</text>
-    <text x="915" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">JUL</text>
-    <rect x="978" y="116" width="64" height="85" rx="9" fill="#12100c"/>
-    <rect x="973" y="111" width="64" height="85" rx="9" fill="#ff8a1f" stroke="#12100c" stroke-width="3.5"/>
-    <text x="1005" y="99" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">121</text>
-    <text x="1005" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">AUG</text>
-    <rect x="1068" y="142" width="64" height="59" rx="9" fill="#12100c"/>
-    <rect x="1063" y="137" width="64" height="59" rx="9" fill="#ff8a1f" stroke="#12100c" stroke-width="3.5"/>
-    <text x="1095" y="125" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#12100c">83</text>
-    <text x="1095" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" letter-spacing="1.2" fill="#12100c" opacity="0.75">SEP</text>
+    <rect x="1" y="1" width="1198" height="248" fill="#14171C"/>
+    <rect x="1" y="1" width="1198" height="1.5" fill="url(#lit-a)"/>
+    <text x="42" y="44" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="3" fill="#F3F5F4">THE SHAPE OF THE YEAR</text>
+    <text x="1150" y="44" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="#8A939E">BUSIEST MONTH &#183; 2026-07 &#183; 173 CONTRIBUTIONS</text>
+    <line x1="34" y1="196" x2="1166" y2="196" stroke="#272D36" stroke-width="1.5"/>
+    <rect x="73" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
+    <text x="105" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">OCT</text>
+    <text x="105" y="236" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="9.5" font-weight="600" letter-spacing="1" fill="#5A626C">2025</text>
+    <rect x="163" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
+    <text x="195" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">NOV</text>
+    <rect x="253" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
+    <text x="285" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">DEC</text>
+    <rect x="343" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
+    <text x="375" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">JAN</text>
+    <text x="375" y="236" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="9.5" font-weight="600" letter-spacing="1" fill="#5A626C">2026</text>
+    <rect x="433" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
+    <text x="465" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">FEB</text>
+    <rect x="523" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
+    <text x="555" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">MAR</text>
+    <rect x="613" y="158" width="64" height="38" rx="7" fill="#3E5A7A"/>
+    <rect x="613" y="158" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
+    <text x="645" y="146" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">54</text>
+    <text x="645" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">APR</text>
+    <rect x="703" y="81" width="64" height="115" rx="7" fill="#35D6A4"/>
+    <rect x="703" y="81" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
+    <text x="735" y="69" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">163</text>
+    <text x="735" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">MAY</text>
+    <rect x="793" y="151" width="64" height="45" rx="7" fill="#3E5A7A"/>
+    <rect x="793" y="151" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
+    <text x="825" y="139" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">64</text>
+    <text x="825" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">JUN</text>
+    <rect x="883" y="74" width="64" height="122" rx="7" fill="#35D6A4"/>
+    <rect x="883" y="74" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
+    <text x="915" y="62" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">173</text>
+    <text x="915" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">JUL</text>
+    <rect x="973" y="111" width="64" height="85" rx="7" fill="#6C8BFF"/>
+    <rect x="973" y="111" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
+    <text x="1005" y="99" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">121</text>
+    <text x="1005" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">AUG</text>
+    <rect x="1063" y="137" width="64" height="59" rx="7" fill="#6C8BFF"/>
+    <rect x="1063" y="137" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
+    <text x="1095" y="125" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">84</text>
+    <text x="1095" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">SEP</text>
   </g>
-  <rect x="8" y="6" width="1176" height="228" rx="22" fill="none" stroke="#12100c" stroke-width="5"/>
+  <rect x="1" y="1" width="1198" height="248" rx="16" fill="none" stroke="#272D36" stroke-width="1.5"/>
 </svg>

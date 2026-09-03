@@ -1,41 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="210" viewBox="0 0 1200 210" fill="none" role="img" aria-label="See the work at xtsy-portfolio.vercel.app">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="176" viewBox="0 0 1200 176" fill="none" role="img" aria-label="See the work at xtsy.is-a.dev">
   <defs>
-    <clipPath id="cta"><rect x="8" y="6" width="1176" height="188" rx="24"/></clipPath>
-    <clipPath id="band"><rect x="8" y="152" width="1176" height="42"/></clipPath>
+    <clipPath id="cc"><rect x="1" y="1" width="1198" height="174" rx="18"/></clipPath>
+    <clipPath id="cb"><rect x="1" y="137" width="1198" height="38"/></clipPath>
+    <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EEF1EE"/>
+      <stop offset="100%" stop-color="#D9DEDA"/>
+    </linearGradient>
   </defs>
+  <g clip-path="url(#cc)">
+    <rect x="1" y="1" width="1198" height="174" fill="url(#cg)"/>
 
-  <rect x="16" y="18" width="1176" height="188" rx="24" fill="#12100c"/>
+    <text x="52" y="86" font-family="'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="54" font-weight="800" letter-spacing="-2" fill="#0B0D10">See the work</text>
+    <text x="55" y="116" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="14.5" font-weight="600" letter-spacing="2.4" fill="#4A5159">xtsy.is-a.dev</text>
 
-  <g clip-path="url(#cta)">
-    <rect x="8" y="6" width="1176" height="188" fill="#12100c"/>
-
-    <rect x="555" y="39" width="10" height="10" rx="2" transform="rotate(45 560 44)" fill="#ffc400"/>
-    <rect x="595" y="91" width="10" height="10" rx="2" transform="rotate(45 600 96)" fill="#ff3b30"/>
-    <rect x="519" y="113" width="10" height="10" rx="2" transform="rotate(45 524 118)" fill="#2f9bff"/>
-
-    <text x="46" y="86" font-family="'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="62" font-weight="800" letter-spacing="-2.4" fill="#fbf4e2">See the work</text>
-    <text x="50" y="120" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="15" font-weight="700" letter-spacing="2" fill="#ffc400">xtsy-portfolio.vercel.app</text>
-
-    <g transform="translate(1064,84)">
-      <circle r="52" fill="#ffc400" stroke="#fbf4e2" stroke-width="4"/>
-      <g stroke="#12100c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
-        <path d="M-16,16 L16,-16 M-6,-16 L16,-16 L16,6"/>
+    <g transform="translate(1092,74)">
+      <circle r="44" fill="#0B0D10"/>
+      <g stroke="#F3F5F4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M-14,14 L14,-14 M-5,-14 L14,-14 L14,5"/>
         <animateTransform attributeName="transform" type="translate"
-          values="0,0; 7,-7; 0,0" dur="2.4s" repeatCount="indefinite"
+          values="0,0; 6,-6; 0,0" dur="2.4s" repeatCount="indefinite"
           calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/>
       </g>
     </g>
 
-    <rect x="8" y="152" width="1176" height="42" fill="#ffc400"/>
-    <g clip-path="url(#band)">
-      <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="16" font-weight="700" letter-spacing="3" fill="#12100c">
-        <text x="0" y="180">SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   </text>
-        <text x="1647" y="180">SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   SEE THE WORK   ◆   </text>
+    <rect x="1" y="137" width="1198" height="38" fill="#0B0D10"/>
+    <g clip-path="url(#cb)">
+      <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" letter-spacing="3.4" fill="#8A939E">
+        <text x="0" y="162">SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   </text>
+        <text x="1830" y="162">SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   SEE THE WORK   ·   </text>
         <animateTransform attributeName="transform" type="translate"
-          values="0,0; -1647,0" dur="28.4s" repeatCount="indefinite"/>
+          values="0,0; -1830,0" dur="33.3s" repeatCount="indefinite"/>
       </g>
     </g>
   </g>
-
-  <rect x="8" y="6" width="1176" height="188" rx="24" fill="none" stroke="#fbf4e2" stroke-width="5"/>
+  <rect x="1" y="1" width="1198" height="174" rx="18" fill="none" stroke="#C9CFCA" stroke-width="1.5"/>
 </svg>

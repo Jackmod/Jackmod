@@ -2,8 +2,29 @@ import { execFileSync } from 'child_process';
 
 export const OUT = new URL('./assets/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 
-export const INK = '#12100c';
-export const CREAM = '#fbf4e2';
+/**
+ * Graphite and a narrow accent set.
+ *
+ * The previous palette was cream and primaries with hard offset shadows — loud,
+ * and it read as a sticker sheet. This is the same information at a lower
+ * volume: near-black surfaces, hairline borders, one accent per idea. Dark
+ * panels also sit correctly on GitHub in either theme, where a cream card
+ * always looked like a cut-out pasted onto the page.
+ */
+export const INK = '#0B0D10';      // page-level black
+export const SURFACE = '#14171C';  // card fill
+export const RAISED = '#1A1E25';   // inner wells
+export const LINE = '#272D36';     // hairlines
+export const TEXT = '#F3F5F4';     // primary type
+export const MUTE = '#8A939E';     // secondary type
+export const FAINT = '#5A626C';    // tertiary type
+
+export const INDIGO = '#6C8BFF';
+export const MINT = '#35D6A4';
+export const CORAL = '#FF7A5C';
+export const AMBER = '#F2C14E';
+export const VIOLET = '#A78BFA';
+
 export const MONO = "ui-monospace,'SF Mono',Menlo,Consolas,monospace";
 export const DISPLAY = "'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif";
 
@@ -24,19 +45,26 @@ export function gql(query) {
   return json.data;
 }
 
-/** The dotted cream ground + hard offset shadow every card shares. */
-export function card(w, h, inner, { id = 'c' } = {}) {
+/**
+ * The shared panel: a graphite surface, a hairline, and a single lit edge along
+ * the top so the card reads as raised without a drop shadow doing the shouting.
+ */
+export function card(w, h, inner, { id = 'c', accent = INDIGO } = {}) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" fill="none" role="img">
   <defs>
-    <pattern id="dots-${id}" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.8" fill="#e3d9bf"/></pattern>
-    <clipPath id="clip-${id}"><rect x="8" y="6" width="${w - 24}" height="${h - 22}" rx="22"/></clipPath>
+    <linearGradient id="lit-${id}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="${accent}" stop-opacity="0"/>
+      <stop offset="22%" stop-color="${accent}" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="${accent}" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip-${id}"><rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="16"/></clipPath>
   </defs>
-  <rect x="16" y="18" width="${w - 24}" height="${h - 22}" rx="22" fill="${INK}"/>
   <g clip-path="url(#clip-${id})">
-    <rect x="8" y="6" width="${w - 24}" height="${h - 22}" fill="${CREAM}"/>
-    <rect x="8" y="6" width="${w - 24}" height="${h - 22}" fill="url(#dots-${id})"/>
+    <rect x="1" y="1" width="${w - 2}" height="${h - 2}" fill="${SURFACE}"/>
+    <rect x="1" y="1" width="${w - 2}" height="1.5" fill="url(#lit-${id})"/>
 ${inner}  </g>
-  <rect x="8" y="6" width="${w - 24}" height="${h - 22}" rx="22" fill="none" stroke="${INK}" stroke-width="5"/>
+  <rect x="1" y="1" width="${w - 2}" height="${h - 2}" rx="16" fill="none" stroke="${LINE}" stroke-width="1.5"/>
 </svg>
 `;
 }

@@ -1,66 +1,208 @@
 /**
- * The designed half: project cards and the toolkit.
+ * The designed half: header, project cards, toolkit, timeline, section rules.
  *
  * Run by hand when the work changes. Kept separate from refresh.mjs because
  * this reads private repositories too, which the token inside Actions cannot.
  */
 import { writeFileSync } from 'fs';
-import { OUT, INK, CREAM, MONO, DISPLAY, esc, card, gql } from './lib.mjs';
+import {
+  OUT, INK, SURFACE, RAISED, LINE, TEXT, MUTE, FAINT,
+  INDIGO, MINT, CORAL, AMBER, VIOLET,
+  MONO, DISPLAY, esc, card, gql,
+} from './lib.mjs';
 
-/* ---------------------------------------------------------------- project cards */
+const SITE = 'xtsy.is-a.dev';
 
-const cards = [
-  { id: 'trace', n: '01', title: 'Trace', bg: '#ffc400', fg: INK,
-    lines: ['Your screen, used as a physical', 'lightbox. Place it, lock it, trace.'],
-    note: 'No framework. No build step.',
-    tech: 'VANILLA JS / CANVAS / INDEXEDDB' },
+/* -------------------------------------------------------------------- header */
 
-  { id: 'spoofer', n: '02', title: 'iPhone Spoofer', bg: '#2f9bff', fg: CREAM,
-    lines: ['Drives a real iPhone’s GPS from a', 'map, over USB. Routes and GPX.'],
-    note: 'Tauri shell, Python sidecar.',
-    tech: 'PYTHON / RUST / TAURI' },
+const header = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="272" viewBox="0 0 1200 272" fill="none" role="img" aria-label="xtsy — full-stack developer and UI designer">
+  <defs>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="${INDIGO}" stop-opacity="0"/>
+      <stop offset="30%" stop-color="${INDIGO}" stop-opacity="0.9"/>
+      <stop offset="58%" stop-color="${MINT}" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="${MINT}" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${INDIGO}" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="${INDIGO}" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="mesh" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0 L0 0 0 26" fill="none" stroke="#1B2027" stroke-width="1"/>
+    </pattern>
+    <clipPath id="hc"><rect x="1" y="1" width="1198" height="270" rx="18"/></clipPath>
+  </defs>
 
-  { id: 'coreplus', n: '03', title: 'Core+', bg: '#ff3b30', fg: CREAM,
-    lines: ['Membership hub for a six-person', 'streamer collective. One board.'],
-    note: 'Cuts, drops, the whole crew.',
-    tech: 'TYPESCRIPT / NEXT.JS / TAILWIND' },
+  <g clip-path="url(#hc)">
+    <rect x="1" y="1" width="1198" height="270" fill="${INK}"/>
+    <rect x="1" y="1" width="1198" height="270" fill="url(#mesh)"/>
+    <rect x="1" y="1" width="1198" height="150" fill="url(#glow)"/>
+    <rect x="1" y="1" width="1198" height="2" fill="url(#sheen)"/>
 
-  { id: 'portfolio', n: '04', title: 'Portfolio', bg: '#a855f7', fg: CREAM,
-    lines: ['Eight case studies behind a', 'horizontal, scroll-driven view.'],
-    note: 'A WebGL lens bends the grid.',
-    tech: 'TYPESCRIPT / REACT / THREE.JS' },
+    <text x="60" y="150" font-family="${DISPLAY}" font-size="118" font-weight="800" letter-spacing="-5.5" fill="${TEXT}">xtsy</text>
+    <rect x="318" y="66" width="7" height="94" fill="${INDIGO}">
+      <animate attributeName="opacity" values="1;1;0;0;1" dur="1.4s" repeatCount="indefinite"/>
+    </rect>
 
-  { id: 'cryptonix', n: '05', title: 'CRYPTONIX', bg: '#3ddc84', fg: INK,
-    lines: ['Solana wallet tracker. Live buy', 'detection and FIFO PnL.'],
-    note: 'Discontinued, source left up.',
-    tech: 'TYPESCRIPT / POSTGRES' },
+    <text x="64" y="188" font-family="${MONO}" font-size="14.5" font-weight="600" letter-spacing="4.6" fill="${MUTE}">FULL-STACK DEVELOPER &#183; UI DESIGNER</text>
 
-  { id: 'dispatch', n: '06', title: 'DISPATCH', bg: CREAM, fg: INK,
-    lines: ['One-click installer for LSPDFR.', 'An afternoon down to one run.'],
-    note: 'Mod wrangling, automated.',
-    tech: 'C# / POWERSHELL' },
-];
+    <line x1="60" y1="216" x2="1140" y2="216" stroke="${LINE}" stroke-width="1.5"/>
 
-const W = 400, H = 250, CW = 388, CH = 238;
+    <g font-family="${MONO}" font-size="12" letter-spacing="2.2" fill="${FAINT}">
+      <text x="60" y="244">SEATTLE, WA</text>
+      <text x="212" y="244" fill="#2C333C">/</text>
+      <text x="238" y="244">SHIPPING SINCE 2021</text>
+      <text x="470" y="244" fill="#2C333C">/</text>
+      <text x="496" y="244">AGE 17</text>
+    </g>
 
-for (const c of cards) {
-  const dim = 'opacity="0.62"';
-  writeFileSync(`${OUT}/card-${c.id}.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none" role="img" aria-label="${esc(c.title)}">
-  <rect x="10" y="11" width="${CW}" height="${CH}" rx="22" fill="${INK}"/>
-  <rect x="2" y="2" width="${CW}" height="${CH}" rx="22" fill="${c.bg}" stroke="${INK}" stroke-width="5"/>
-  <text x="26" y="46" font-family="${MONO}" font-size="13" font-weight="700" letter-spacing="2" fill="${c.fg}" ${dim}>${c.n}</text>
-  <g transform="translate(${CW - 26},38)">
-    <circle r="19" fill="${c.fg === CREAM ? CREAM : INK}"/>
-    <path d="M-6,6 L6,-6 M-2,-6 L6,-6 L6,2" stroke="${c.fg === CREAM ? INK : CREAM}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <g transform="translate(956,228)">
+      <rect width="184" height="30" rx="15" fill="${RAISED}" stroke="${LINE}" stroke-width="1.5"/>
+      <circle cx="20" cy="15" r="4" fill="${MINT}">
+        <animate attributeName="opacity" values="1;0.2;1" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <text x="36" y="19.5" font-family="${MONO}" font-size="11" font-weight="600" letter-spacing="2" fill="${MINT}">OPEN TO WORK</text>
+    </g>
+
+    <!-- lens profile: the bulge my portfolio bends its thumbnails through -->
+    <g stroke-linecap="round" stroke-width="2" opacity="0.85">
+      ${[[820,26],[848,52],[876,76],[904,96],[932,110],[960,118],[988,120],[1016,118],[1044,110],[1072,96],[1100,76],[1128,52]]
+        .map(([x, hh], i) => {
+          const c = i < 4 ? '#232A33' : i < 6 ? '#2C3A46' : i < 8 ? INDIGO : '#2C3A46';
+          const op = i >= 6 && i <= 7 ? 0.7 : 0.55;
+          return `<line x1="${x}" y1="${118 - hh / 2}" x2="${x}" y2="${118 + hh / 2}" stroke="${c}" opacity="${op}"/>`;
+        }).join('\n      ')}
+    </g>
   </g>
-  <text x="26" y="104" font-family="${DISPLAY}" font-size="42" font-weight="800" letter-spacing="-1.6" fill="${c.fg}">${esc(c.title)}</text>
-  <text x="26" y="140" font-family="${MONO}" font-size="12.5" fill="${c.fg}" ${dim}>${esc(c.lines[0])}</text>
-  <text x="26" y="160" font-family="${MONO}" font-size="12.5" fill="${c.fg}" ${dim}>${esc(c.lines[1])}</text>
-  <text x="26" y="190" font-family="${MONO}" font-size="12.5" font-weight="700" fill="${c.fg}">${esc(c.note)}</text>
-  <line x1="26" y1="204" x2="${CW - 22}" y2="204" stroke="${c.fg}" stroke-opacity="0.28" stroke-width="2"/>
-  <text x="26" y="224" font-family="${MONO}" font-size="10.5" font-weight="700" letter-spacing="1.6" fill="${c.fg}" ${dim}>${esc(c.tech)}</text>
+
+  <rect x="1" y="1" width="1198" height="270" rx="18" fill="none" stroke="${LINE}" stroke-width="1.5"/>
+</svg>
+`;
+writeFileSync(`${OUT}/header.svg`, header);
+
+/* ---------------------------------------------------------------- the call */
+
+/**
+ * The single high-contrast element on the page.
+ *
+ * Everything else is graphite, so the one thing worth clicking is the one
+ * thing that inverts. The marquee is two copies of the strip offset by exactly
+ * one strip width, so the loop seam never lands on screen.
+ */
+const TICKER = 'SEE THE WORK';
+const unit = `${TICKER}   ·   `;
+const unitW = Math.round(unit.length * 9.65);
+const reps = Math.ceil(1500 / unitW) + 1;
+const strip = unit.repeat(reps);
+const stripW = unitW * reps;
+const CTAH = 176;
+
+writeFileSync(`${OUT}/cta.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="${CTAH}" viewBox="0 0 1200 ${CTAH}" fill="none" role="img" aria-label="See the work at ${SITE}">
+  <defs>
+    <clipPath id="cc"><rect x="1" y="1" width="1198" height="${CTAH - 2}" rx="18"/></clipPath>
+    <clipPath id="cb"><rect x="1" y="${CTAH - 39}" width="1198" height="38"/></clipPath>
+    <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EEF1EE"/>
+      <stop offset="100%" stop-color="#D9DEDA"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#cc)">
+    <rect x="1" y="1" width="1198" height="${CTAH - 2}" fill="url(#cg)"/>
+
+    <text x="52" y="86" font-family="${DISPLAY}" font-size="54" font-weight="800" letter-spacing="-2" fill="${INK}">See the work</text>
+    <text x="55" y="116" font-family="${MONO}" font-size="14.5" font-weight="600" letter-spacing="2.4" fill="#4A5159">${SITE}</text>
+
+    <g transform="translate(1092,74)">
+      <circle r="44" fill="${INK}"/>
+      <g stroke="${TEXT}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M-14,14 L14,-14 M-5,-14 L14,-14 L14,5"/>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 6,-6; 0,0" dur="2.4s" repeatCount="indefinite"
+          calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/>
+      </g>
+    </g>
+
+    <rect x="1" y="${CTAH - 39}" width="1198" height="38" fill="${INK}"/>
+    <g clip-path="url(#cb)">
+      <g font-family="${MONO}" font-size="12.5" font-weight="600" letter-spacing="3.4" fill="${MUTE}">
+        <text x="0" y="${CTAH - 14}">${strip}</text>
+        <text x="${stripW}" y="${CTAH - 14}">${strip}</text>
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; -${stripW},0" dur="${(stripW / 55).toFixed(1)}s" repeatCount="indefinite"/>
+      </g>
+    </g>
+  </g>
+  <rect x="1" y="1" width="1198" height="${CTAH - 2}" rx="18" fill="none" stroke="#C9CFCA" stroke-width="1.5"/>
 </svg>
 `);
+
+/* ---------------------------------------------------------------- work cards */
+
+const cards = [
+  { id: 'trace', n: '01', title: 'Trace', accent: AMBER,
+    lines: ['Your screen, used as a physical', 'lightbox. Place it, lock it, trace.'],
+    note: 'No framework. No build step.', tech: 'VANILLA JS · CANVAS · INDEXEDDB' },
+
+  { id: 'spoofer', n: '02', title: 'iPhone Spoofer', accent: INDIGO,
+    lines: ['Drives a real iPhone’s GPS from a', 'map, over USB. Routes and GPX.'],
+    note: 'Tauri shell, Python sidecar.', tech: 'PYTHON · RUST · TAURI' },
+
+  { id: 'coreplus', n: '03', title: 'Core+', accent: CORAL,
+    lines: ['Membership hub for a six-person', 'streamer collective. One board.'],
+    note: 'Cuts, drops, the whole crew.', tech: 'TYPESCRIPT · NEXT.JS · TAILWIND' },
+
+  { id: 'portfolio', n: '04', title: 'Portfolio', accent: VIOLET,
+    lines: ['Eight case studies behind a', 'horizontal, scroll-driven view.'],
+    note: 'A WebGL lens bends the grid.', tech: 'TYPESCRIPT · REACT · THREE.JS' },
+
+  { id: 'cryptonix', n: '05', title: 'CRYPTONIX', accent: MINT,
+    lines: ['Solana wallet tracker. Live buy', 'detection and FIFO PnL.'],
+    note: 'Discontinued, source left up.', tech: 'TYPESCRIPT · POSTGRES' },
+
+  { id: 'dispatch', n: '06', title: 'DISPATCH', accent: '#9BA6B2',
+    lines: ['One-click installer for LSPDFR.', 'An afternoon down to one run.'],
+    note: 'Mod wrangling, automated.', tech: 'C# · POWERSHELL' },
+];
+
+const W = 400, H = 244;
+for (const c of cards) {
+  const inner = `    <rect x="1" y="1" width="${W - 2}" height="3" fill="${c.accent}"/>
+    <text x="24" y="44" font-family="${MONO}" font-size="12" font-weight="700" letter-spacing="2.4" fill="${c.accent}">${c.n}</text>
+    <g transform="translate(${W - 40},38)">
+      <circle r="16" fill="${RAISED}" stroke="${LINE}" stroke-width="1.5"/>
+      <path d="M-5,5 L5,-5 M-1.5,-5 L5,-5 L5,1.5" stroke="${MUTE}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+    <text x="24" y="98" font-family="${DISPLAY}" font-size="36" font-weight="800" letter-spacing="-1.2" fill="${TEXT}">${esc(c.title)}</text>
+    <text x="24" y="132" font-family="${MONO}" font-size="12" fill="${MUTE}">${esc(c.lines[0])}</text>
+    <text x="24" y="150" font-family="${MONO}" font-size="12" fill="${MUTE}">${esc(c.lines[1])}</text>
+    <text x="24" y="180" font-family="${MONO}" font-size="12" font-weight="600" fill="${TEXT}">${esc(c.note)}</text>
+    <line x1="24" y1="198" x2="${W - 24}" y2="198" stroke="${LINE}" stroke-width="1.5"/>
+    <text x="24" y="220" font-family="${MONO}" font-size="10" font-weight="600" letter-spacing="1.6" fill="${FAINT}">${esc(c.tech)}</text>\n`;
+  writeFileSync(`${OUT}/card-${c.id}.svg`, card(W, H, inner, { id: c.id, accent: c.accent }));
+}
+
+/* ------------------------------------------------------------------ sections */
+
+function sectionBar(num, title, meta, accent) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="52" viewBox="0 0 1200 52" fill="none" role="img" aria-label="${esc(num)} ${esc(title)}">
+  <line x1="0" y1="26" x2="1200" y2="26" stroke="${LINE}" stroke-width="1.5"/>
+  <rect x="0" y="14" width="316" height="24" fill="${INK}"/>
+  <text x="2" y="31" font-family="${MONO}" font-size="12" font-weight="700" letter-spacing="2" fill="${accent}">${esc(num)}</text>
+  <text x="36" y="31" font-family="${MONO}" font-size="12" font-weight="700" letter-spacing="3.2" fill="${TEXT}">${esc(title)}</text>
+  <rect x="${1200 - (meta.length * 7.1 + 22)}" y="14" width="${meta.length * 7.1 + 22}" height="24" fill="${INK}"/>
+  <text x="1198" y="31" text-anchor="end" font-family="${MONO}" font-size="11" letter-spacing="1.6" fill="${FAINT}">${esc(meta)}</text>
+</svg>
+`;
+}
+
+const SECTIONS = [
+  ['sec-numbers', '01', 'THE NUMBERS',   'REBUILT EVERY MORNING BY WORKFLOW',  MINT],
+  ['sec-work',    '02', 'SELECTED WORK', 'SIX SHIPPED · EVERY CARD IS A LINK', AMBER],
+  ['sec-run',     '03', 'THE 2026 RUN',  'REAL DATES, FROM THE API',           INDIGO],
+  ['sec-stack',   '04', 'THE STACK',     'WHAT I REACH FOR, AND WHAT I WROTE', CORAL],
+];
+for (const [id, num, title, meta, accent] of SECTIONS) {
+  writeFileSync(`${OUT}/${id}.svg`, sectionBar(num, title, meta, accent));
 }
 
 /* ------------------------------------------------------------------- toolkit */
@@ -70,42 +212,24 @@ for (const c of cards) {
  *
  * GitHub proxies README images through camo, and an <image href> pointing off
  * to a CDN inside an SVG never loads. So the paths are pulled from Simple Icons
- * at build time and written into the file — the marks render as geometry, with
- * no request at view time and nothing to rot.
+ * at build time and written into the file — geometry in the file, no request at
+ * view time and nothing to rot.
  */
 const ICONS = 'https://cdn.jsdelivr.net/npm/simple-icons@13/icons';
 
 const rows = [
   { label: 'LANGUAGES', items: [
-    ['TypeScript', 'typescript', '#3178C6'],
-    ['JavaScript', 'javascript', '#E5C707'],
-    ['Python', 'python', '#3776AB'],
-    ['C#', null, '#512BD4'],
-    ['Rust', 'rust', '#12100c'],
-    ['SQL', null, '#3ddc84'],
-  ] },
+    ['TypeScript', 'typescript', '#6C9BEE'], ['JavaScript', 'javascript', '#E8D44D'],
+    ['Python', 'python', '#6FA8DC'], ['C#', null, VIOLET], ['Rust', 'rust', '#D9A38A'], ['SQL', null, MINT] ] },
   { label: 'INTERFACE', items: [
-    ['React', 'react', '#0d9dc7'],
-    ['Next.js', 'nextdotjs', '#12100c'],
-    ['Tailwind', 'tailwindcss', '#06B6D4'],
-    ['Three.js', 'threedotjs', '#12100c'],
-    ['GSAP', null, '#0AE448'],
-    ['GLSL', null, '#5586A4'],
-  ] },
+    ['React', 'react', '#61DAFB'], ['Next.js', 'nextdotjs', '#E6E9E6'], ['Tailwind', 'tailwindcss', '#38BDF8'],
+    ['Three.js', 'threedotjs', '#E6E9E6'], ['GSAP', null, MINT], ['GLSL', null, INDIGO] ] },
   { label: 'BEHIND IT', items: [
-    ['Node', 'nodedotjs', '#5FA04E'],
-    ['FastAPI', 'fastapi', '#009688'],
-    ['Postgres', 'postgresql', '#4169E1'],
-    ['Tauri', 'tauri', '#1a9fb0'],
-    ['IndexedDB', null, '#a855f7'],
-  ] },
+    ['Node', 'nodedotjs', '#7DC46B'], ['FastAPI', 'fastapi', '#2CC5A8'], ['Postgres', 'postgresql', '#7AA2E3'],
+    ['Tauri', 'tauri', '#4FD3E0'], ['IndexedDB', null, VIOLET] ] },
   { label: 'DAY TO DAY', items: [
-    ['Git', 'git', '#F05032'],
-    ['Vercel', 'vercel', '#12100c'],
-    ['Vite', 'vite', '#646CFF'],
-    ['Figma', 'figma', '#F24E1E'],
-    ['Playwright', null, '#2f9bff'],
-  ] },
+    ['Git', 'git', '#F0704F'], ['Vercel', 'vercel', '#E6E9E6'], ['Vite', 'vite', '#9B8CFF'],
+    ['Figma', 'figma', '#FF8A65'], ['Playwright', null, MINT] ] },
 ];
 
 const slugs = [...new Set(rows.flatMap((r) => r.items.map((i) => i[1]).filter(Boolean)))];
@@ -116,264 +240,133 @@ const paths = Object.fromEntries(await Promise.all(slugs.map(async (s) => {
   if (!d) throw new Error(`icon ${s}: no path`);
   return [s, d];
 })));
-console.log(`inlined ${slugs.length} brand marks`);
 
-const PAD = 42, CHW = 7.35, GAP = 11, ROWGAP = 80, PH = 40;
-let y = 78, body = '';
-
+const PAD = 34, CHW = 7.2, GAP = 9, ROWGAP = 72, PH = 36;
+let ty = 70, tbody = '';
 for (const row of rows) {
-  body += `    <text x="${PAD}" y="${y}" font-family="${MONO}" font-size="11.5" font-weight="700" letter-spacing="2.8" fill="${INK}" opacity="0.5">${row.label}</text>\n`;
+  tbody += `    <text x="${PAD}" y="${ty}" font-family="${MONO}" font-size="10.5" font-weight="700" letter-spacing="2.6" fill="${FAINT}">${row.label}</text>\n`;
   let x = PAD;
-  const py = y + 12;
+  const py = ty + 10;
   for (const [name, slug, hex] of row.items) {
     const glyph = slug
-      ? `      <g transform="translate(20,${PH / 2 - 9}) scale(0.75)"><path d="${paths[slug]}" fill="${hex}"/></g>`
-      : `      <circle cx="27" cy="${PH / 2}" r="6" fill="${hex}" stroke="${INK}" stroke-width="2"/>`;
-    const textX = slug ? 46 : 42;
-    const w = Math.round(textX + name.length * CHW + 24);
-    body += `    <g transform="translate(${x},${py})">
-      <rect x="4" y="5" width="${w}" height="${PH}" rx="20" fill="${INK}"/>
-      <rect width="${w}" height="${PH}" rx="20" fill="${CREAM}" stroke="${INK}" stroke-width="3.5"/>
+      ? `      <g transform="translate(16,${PH / 2 - 8}) scale(0.67)"><path d="${paths[slug]}" fill="${hex}"/></g>`
+      : `      <circle cx="23" cy="${PH / 2}" r="5" fill="${hex}"/>`;
+    const textX = slug ? 40 : 36;
+    const w = Math.round(textX + name.length * CHW + 20);
+    tbody += `    <g transform="translate(${x},${py})">
+      <rect width="${w}" height="${PH}" rx="18" fill="${RAISED}" stroke="${LINE}" stroke-width="1.5"/>
 ${glyph}
-      <text x="${textX}" y="${PH / 2 + 4.5}" font-family="${MONO}" font-size="13.5" font-weight="700" fill="${INK}">${esc(name)}</text>
+      <text x="${textX}" y="${PH / 2 + 4}" font-family="${MONO}" font-size="12.5" font-weight="600" fill="${TEXT}">${esc(name)}</text>
     </g>\n`;
     x += w + GAP;
   }
-  y += ROWGAP;
+  ty += ROWGAP;
 }
-
-const TH = y + 6;
-const head = `    <text x="${PAD}" y="44" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="3" fill="${INK}">THE TOOLKIT</text>\n`;
-writeFileSync(`${OUT}/toolkit.svg`, card(1200, TH, head + body, { id: 't' }));
-
-console.log(`wrote ${cards.length} cards + toolkit.svg (h=${TH})`);
-
-/* ------------------------------------------------------------------ sections */
-
-/**
- * Section rules.
- *
- * Eight full-width cards stacked at the same weight read as a pile of widgets
- * with no way in. These are the wayfinding: ink bars that alternate against the
- * cream cards, numbered so the page has an order rather than just a length.
- */
-function sectionBar(num, title, meta, accent) {
-  const h = 66;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="${h}" viewBox="0 0 1200 ${h}" fill="none" role="img" aria-label="${esc(num)} ${esc(title)}">
-  <rect x="8" y="6" width="1176" height="46" rx="23" fill="${INK}" stroke="${CREAM}" stroke-width="3.5"/>
-  <circle cx="1136" cy="29" r="5" fill="${accent}"/>
-  <text x="34" y="35" font-family="${MONO}" font-size="13" font-weight="700" letter-spacing="2" fill="${accent}">${esc(num)}</text>
-  <text x="72" y="35" font-family="${MONO}" font-size="13" font-weight="700" letter-spacing="3.4" fill="${CREAM}">${esc(title)}</text>
-  <text x="1118" y="35" text-anchor="end" font-family="${MONO}" font-size="11.5" letter-spacing="1.8" fill="${CREAM}" opacity="0.5">${esc(meta)}</text>
-</svg>
-`;
-}
-
-const SECTIONS = [
-  ['sec-numbers',  '01', 'THE NUMBERS',    'REBUILT EVERY MORNING BY WORKFLOW',  '#3ddc84'],
-  ['sec-work',     '02', 'SELECTED WORK',  'SIX SHIPPED · EVERY CARD IS A LINK', '#ffc400'],
-  ['sec-run',      '03', 'THE 2026 RUN',   'REAL DATES, FROM THE API',           '#2f9bff'],
-  ['sec-stack',    '04', 'THE STACK',      'WHAT I REACH FOR, AND WHAT I WROTE', '#ff3b30'],
-];
-for (const [id, num, title, meta, accent] of SECTIONS) {
-  writeFileSync(`${OUT}/${id}.svg`, sectionBar(num, title, meta, accent));
-}
-console.log(`wrote ${SECTIONS.length} section rules`);
+const TH = ty - 20;
+writeFileSync(`${OUT}/toolkit.svg`, card(1200, TH,
+  `    <text x="${PAD}" y="38" font-family="${MONO}" font-size="11.5" font-weight="700" letter-spacing="3" fill="${TEXT}">THE TOOLKIT</text>\n` + tbody,
+  { id: 'tk', accent: CORAL }));
 
 /* ----------------------------------------------------------------- languages */
 
-/**
- * Byte share across every repository I own, counted rather than claimed.
- *
- * Lives here and not in refresh.mjs because it reads private repositories,
- * which the token inside Actions cannot see — running it there would quietly
- * publish a different, smaller picture every morning.
- */
 const repoLangs = gql(`query {
   user(login: "Jackmod") {
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
       totalCount
-      nodes { languages(first: 12) { edges { size node { name color } } } }
+      nodes { languages(first: 12) { edges { size node { name } } } }
     }
   }
 }`).user.repositories;
 
 const totals = new Map();
 for (const r of repoLangs.nodes) {
-  for (const e of r.languages.edges) {
-    totals.set(e.node.name, (totals.get(e.node.name) ?? 0) + e.size);
-  }
+  for (const e of r.languages.edges) totals.set(e.node.name, (totals.get(e.node.name) ?? 0) + e.size);
 }
 const grand = [...totals.values()].reduce((a, b) => a + b, 0);
 const ranked = [...totals.entries()].sort((a, b) => b[1] - a[1]);
-
-// Anything under 1% becomes one honest "and the rest" block instead of slivers
-// too thin to see and a legend nobody can read.
 const MAJOR = ranked.filter(([, v]) => v / grand >= 0.01);
 const restPct = 100 - MAJOR.reduce((s, [, v]) => s + (v / grand) * 100, 0);
 
-const SWATCH = { JavaScript: '#f7df1e', CSS: '#a855f7', TypeScript: '#2f9bff', 'C#': '#3ddc84', Python: '#4b8bbe', HTML: '#ff3b30', PowerShell: '#5391FE', Rust: '#ff8a1f', Shell: '#89e051', PLpgSQL: '#336790' };
-const swatch = (n, i) => SWATCH[n] ?? ['#8a8578', '#c2b8a3', '#6b6455'][i % 3];
+const HUE = { JavaScript: '#E8D44D', CSS: VIOLET, TypeScript: INDIGO, 'C#': MINT, Python: '#6FA8DC', HTML: CORAL };
+const hue = (n, i) => HUE[n] ?? [FAINT, '#6E7783', '#4C545E'][i % 3];
 
-const LW = 1116, LX = 42;
-let segs = '', legend = '', cursor = 0, lx2 = LX;
+const LW = 1132, LX = 34;
+let segs = '', lgd = '', cur = 0, lgx = LX;
 MAJOR.forEach(([name, v], i) => {
   const pct = (v / grand) * 100;
   const w = Math.round((pct / 100) * LW);
-  segs += `      <rect x="${cursor}" y="52" width="${w}" height="30" fill="${swatch(name, i)}"/>\n`;
-  cursor += w;
-  const text = `${name} ${pct.toFixed(1)}%`;
-  legend += `    <rect x="${lx2}" y="102" width="14" height="14" rx="4" fill="${swatch(name, i)}" stroke="${INK}" stroke-width="2.5"/>
-    <text x="${lx2 + 22}" y="114" font-family="${MONO}" font-size="13" font-weight="600" fill="${INK}">${esc(text)}</text>\n`;
-  lx2 += 36 + text.length * 7.9;
+  segs += `      <rect x="${cur}" y="56" width="${Math.max(w - 2, 2)}" height="14" rx="7" fill="${hue(name, i)}"/>\n`;
+  cur += w;
+  const t = `${name} ${pct.toFixed(1)}%`;
+  lgd += `    <circle cx="${lgx + 5}" cy="${102}" r="5" fill="${hue(name, i)}"/>
+    <text x="${lgx + 18}" y="106" font-family="${MONO}" font-size="12" font-weight="600" fill="${MUTE}">${esc(t)}</text>\n`;
+  lgx += 30 + t.length * 7.3;
 });
 if (restPct > 0.05) {
-  segs += `      <rect x="${cursor}" y="52" width="${LW - cursor}" height="30" fill="#8a8578"/>\n`;
-  legend += `    <rect x="${lx2}" y="102" width="14" height="14" rx="4" fill="#8a8578" stroke="${INK}" stroke-width="2.5"/>
-    <text x="${lx2 + 22}" y="114" font-family="${MONO}" font-size="13" font-weight="600" fill="${INK}">the rest ${restPct.toFixed(1)}%</text>\n`;
+  segs += `      <rect x="${cur}" y="56" width="${Math.max(LW - cur - 2, 2)}" height="14" rx="7" fill="${FAINT}"/>\n`;
+  lgd += `    <circle cx="${lgx + 5}" cy="102" r="5" fill="${FAINT}"/>
+    <text x="${lgx + 18}" y="106" font-family="${MONO}" font-size="12" font-weight="600" fill="${MUTE}">the rest ${restPct.toFixed(1)}%</text>\n`;
 }
 
-const lhead = `    <text x="${LX}" y="40" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="2.6" fill="${INK}">WHAT THE BYTES SAY &#183; ${repoLangs.totalCount} REPOS</text>
-    <defs><clipPath id="lbar"><rect x="0" y="52" width="${LW}" height="30" rx="15"/></clipPath></defs>
-    <g clip-path="url(#lbar)" transform="translate(${LX},0)">
-${segs}      <rect x="-${LW}" y="52" width="${LW}" height="30" fill="${CREAM}">
-        <animate attributeName="x" values="0;-${LW}" dur="1.3s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1" keyTimes="0;1"/>
-      </rect>
-    </g>
-    <rect x="${LX}" y="52" width="${LW}" height="30" rx="15" fill="none" stroke="${INK}" stroke-width="4"/>\n`;
-
-const lfoot = `    <text x="${LX}" y="146" font-family="${MONO}" font-size="11.5" fill="#6b6455">Bytes reward whoever ships the most files, so this is honest rather than flattering. What I reach for is above.</text>\n`;
-
-writeFileSync(`${OUT}/languages.svg`, card(1200, 176, lhead + legend + lfoot, { id: 'g' }));
-console.log(`languages: ${MAJOR.length} over 1% across ${repoLangs.totalCount} repos, ${(grand / 1048576).toFixed(1)} MB counted`);
+writeFileSync(`${OUT}/languages.svg`, card(1200, 152,
+  `    <text x="${LX}" y="36" font-family="${MONO}" font-size="11.5" font-weight="700" letter-spacing="3" fill="${TEXT}">WHAT THE BYTES SAY</text>
+    <text x="1166" y="36" text-anchor="end" font-family="${MONO}" font-size="11" letter-spacing="1.6" fill="${FAINT}">${repoLangs.totalCount} REPOSITORIES · ${(grand / 1048576).toFixed(1)} MB COUNTED</text>
+    <rect x="${LX}" y="56" width="${LW}" height="14" rx="7" fill="${RAISED}"/>
+    <g transform="translate(${LX},0)">
+${segs}    </g>
+${lgd}    <text x="${LX}" y="134" font-family="${MONO}" font-size="10.5" fill="${FAINT}">Bytes reward whoever ships the most files, so this is honest rather than flattering. What I reach for is above.</text>\n`,
+  { id: 'lg', accent: CORAL }));
 
 /* ------------------------------------------------------------------ timeline */
 
-/**
- * Six months of shipping, on a real date axis.
- *
- * Dates are the repository creation dates from the API, not a story told
- * afterwards. Labels alternate above and below the rule because at this
- * density they would otherwise collide.
- */
 const ships = [
-  { date: '2026-04-04', name: 'torusdata',      note: 'data platform',      c: '#a855f7' },
-  { date: '2026-06-30', name: 'Auto Clicker',   note: 'desktop automation', c: '#3ddc84' },
-  { date: '2026-07-20', name: 'DISPATCH',       note: 'one-click installer', c: '#ffc400' },
-  { date: '2026-07-27', name: 'Portfolio',      note: 'eight case studies', c: '#2f9bff' },
-  { date: '2026-08-02', name: 'Core+',          note: 'membership hub',     c: '#ff3b30' },
-  { date: '2026-08-08', name: 'iPhone Spoofer', note: 'GPS over USB',       c: '#a855f7' },
-  { date: '2026-08-16', name: 'Trace',          note: 'screen as lightbox', c: '#ffc400' },
-  { date: '2026-08-31', name: 'CRYPTONIX',      note: 'wallet tracker',     c: '#3ddc84' },
-  { date: '2026-09-02', name: 'verbatim',       note: 'transcription',      c: '#2f9bff' },
+  { date: '2026-04-04', name: 'torusdata',      note: 'data platform',       c: VIOLET },
+  { date: '2026-06-30', name: 'Auto Clicker',   note: 'desktop automation',  c: MINT },
+  { date: '2026-07-20', name: 'DISPATCH',       note: 'one-click installer', c: '#9BA6B2' },
+  { date: '2026-07-27', name: 'Portfolio',      note: 'eight case studies',  c: VIOLET },
+  { date: '2026-08-02', name: 'Core+',          note: 'membership hub',      c: CORAL },
+  { date: '2026-08-08', name: 'iPhone Spoofer', note: 'GPS over USB',        c: INDIGO },
+  { date: '2026-08-16', name: 'Trace',          note: 'screen as lightbox',  c: AMBER },
+  { date: '2026-08-31', name: 'CRYPTONIX',      note: 'wallet tracker',      c: MINT },
+  { date: '2026-09-02', name: 'verbatim',       note: 'transcription',       c: INDIGO },
 ];
 
 const t0 = Date.parse('2026-03-25'), t1 = Date.parse('2026-09-10');
-const TL = 92, TR = 1120, TAXIS = 172, TLH = 320;
-const tx = (d) => TL + ((Date.parse(d) - t0) / (t1 - t0)) * (TR - TL);
+const TLL = 80, TLR = 1120, AX = 168, TLH = 300;
+const tx = (d) => TLL + ((Date.parse(d) - t0) / (t1 - t0)) * (TLR - TLL);
 
 let ticks = '';
 for (const [m, lbl] of [['2026-04-01','APR'],['2026-05-01','MAY'],['2026-06-01','JUN'],['2026-07-01','JUL'],['2026-08-01','AUG'],['2026-09-01','SEP']]) {
-  ticks += `    <line x1="${tx(m).toFixed(1)}" y1="${TAXIS - 8}" x2="${tx(m).toFixed(1)}" y2="${TAXIS + 8}" stroke="${INK}" stroke-width="2.5" opacity="0.35"/>
-    <text x="${tx(m).toFixed(1)}" y="${TAXIS + 30}" text-anchor="middle" font-family="${MONO}" font-size="11" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.45">${lbl}</text>\n`;
+  ticks += `    <line x1="${tx(m).toFixed(1)}" y1="${AX - 6}" x2="${tx(m).toFixed(1)}" y2="${AX + 6}" stroke="${LINE}" stroke-width="1.5"/>
+    <text x="${tx(m).toFixed(1)}" y="${AX + 26}" text-anchor="middle" font-family="${MONO}" font-size="10.5" font-weight="600" letter-spacing="1.6" fill="${FAINT}">${lbl}</text>\n`;
 }
 
-/**
- * Lane packing.
- *
- * Nine ships inside six months put labels on top of each other — August alone
- * has four. Each label claims the first lane whose last occupant has already
- * ended, alternating above and below the rule so the axis stays balanced.
- */
+// Four lanes, claimed greedily: August alone holds four ships and the labels
+// would otherwise print straight through each other.
 const LANES = [
-  { dir: -1, name: TAXIS - 42, note: TAXIS - 58, stem: TAXIS - 26, end: -1e9 },
-  { dir: 1,  name: TAXIS + 56, note: TAXIS + 72, stem: TAXIS + 40, end: -1e9 },
-  { dir: -1, name: TAXIS - 82, note: TAXIS - 98, stem: TAXIS - 66, end: -1e9 },
-  { dir: 1,  name: TAXIS + 96, note: TAXIS + 112, stem: TAXIS + 80, end: -1e9 },
+  { name: AX - 38, note: AX - 54, stem: AX - 24, end: -1e9 },
+  { name: AX + 54, note: AX + 70, stem: AX + 40, end: -1e9 },
+  { name: AX - 78, note: AX - 94, stem: AX - 64, end: -1e9 },
+  { name: AX + 94, note: AX + 110, stem: AX + 80, end: -1e9 },
 ];
-
 let marks = '';
 for (const s of ships) {
   const x = tx(s.date);
-  const w = Math.max(s.name.length, s.note.length) * 6.6 + 14;
+  const w = Math.max(s.name.length, s.note.length) * 6.4 + 14;
   const lane = LANES.find((l) => x - w / 2 > l.end) ?? LANES[LANES.length - 1];
   lane.end = x + w / 2;
-
-  marks += `    <line x1="${x.toFixed(1)}" y1="${TAXIS}" x2="${x.toFixed(1)}" y2="${lane.stem}" stroke="${INK}" stroke-width="3"/>
-    <circle cx="${x.toFixed(1)}" cy="${TAXIS}" r="9" fill="${s.c}" stroke="${INK}" stroke-width="3.5"/>
-    <text x="${x.toFixed(1)}" y="${lane.name}" text-anchor="middle" font-family="${MONO}" font-size="12.5" font-weight="700" fill="${INK}">${esc(s.name)}</text>
-    <text x="${x.toFixed(1)}" y="${lane.note}" text-anchor="middle" font-family="${MONO}" font-size="10" letter-spacing="0.6" fill="${INK}" opacity="0.5">${esc(s.note)}</text>\n`;
+  marks += `    <line x1="${x.toFixed(1)}" y1="${AX}" x2="${x.toFixed(1)}" y2="${lane.stem}" stroke="${LINE}" stroke-width="1.5"/>
+    <circle cx="${x.toFixed(1)}" cy="${AX}" r="6" fill="${s.c}"/>
+    <circle cx="${x.toFixed(1)}" cy="${AX}" r="11" fill="none" stroke="${s.c}" stroke-opacity="0.25" stroke-width="1.5"/>
+    <text x="${x.toFixed(1)}" y="${lane.name}" text-anchor="middle" font-family="${MONO}" font-size="12" font-weight="600" fill="${TEXT}" stroke="${SURFACE}" stroke-width="5" paint-order="stroke">${esc(s.name)}</text>
+    <text x="${x.toFixed(1)}" y="${lane.note}" text-anchor="middle" font-family="${MONO}" font-size="10" fill="${FAINT}" stroke="${SURFACE}" stroke-width="4" paint-order="stroke">${esc(s.note)}</text>\n`;
 }
 
-const thead = `    <text x="42" y="44" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="3" fill="${INK}">THE 2026 RUN &#183; NINE THINGS SHIPPED</text>
-    <text x="1150" y="44" text-anchor="end" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="${INK}" opacity="0.55">APR &#8594; SEP</text>
-    <line x1="${TL - 34}" y1="${TAXIS}" x2="${TR + 34}" y2="${TAXIS}" stroke="${INK}" stroke-width="4"/>\n`;
+writeFileSync(`${OUT}/timeline.svg`, card(1200, TLH,
+  `    <text x="34" y="38" font-family="${MONO}" font-size="11.5" font-weight="700" letter-spacing="3" fill="${TEXT}">THE 2026 RUN &#183; NINE THINGS SHIPPED</text>
+    <text x="1166" y="38" text-anchor="end" font-family="${MONO}" font-size="11" letter-spacing="1.6" fill="${FAINT}">APR &#8594; SEP</text>
+    <line x1="46" y1="${AX}" x2="1154" y2="${AX}" stroke="${LINE}" stroke-width="1.5"/>\n` + ticks + marks,
+  { id: 'tl', accent: INDIGO }));
 
-writeFileSync(`${OUT}/timeline.svg`, card(1200, TLH, thead + ticks + marks, { id: 'l' }));
-console.log('wrote timeline.svg');
-
-/* ----------------------------------------------------------------- the call */
-
-/**
- * The one thing the page is actually asking you to do.
- *
- * The marquee is two copies of the same strip translated by exactly one strip
- * width: when the animation loops the second copy is sitting where the first
- * began, so the seam never lands anywhere visible.
- */
-const URL_TEXT = 'xtsy-portfolio.vercel.app';
-const TICKER = 'SEE THE WORK';
-const DIAMOND = (x, y, c) => `<rect x="${x - 5}" y="${y - 5}" width="10" height="10" rx="2" transform="rotate(45 ${x} ${y})" fill="${c}"/>`;
-
-const CH2 = 9.65;                       // mono advance at 16px
-const unit = `${TICKER}   ◆   `;
-const unitW = Math.round(unit.length * CH2);
-const reps = Math.ceil(1400 / unitW) + 1;
-const strip = unit.repeat(reps);
-const stripW = unitW * reps;
-
-const CTAH = 210;
-const cta = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="${CTAH}" viewBox="0 0 1200 ${CTAH}" fill="none" role="img" aria-label="See the work at ${URL_TEXT}">
-  <defs>
-    <clipPath id="cta"><rect x="8" y="6" width="1176" height="${CTAH - 22}" rx="24"/></clipPath>
-    <clipPath id="band"><rect x="8" y="${CTAH - 58}" width="1176" height="42"/></clipPath>
-  </defs>
-
-  <rect x="16" y="18" width="1176" height="${CTAH - 22}" rx="24" fill="${INK}"/>
-
-  <g clip-path="url(#cta)">
-    <rect x="8" y="6" width="1176" height="${CTAH - 22}" fill="${INK}"/>
-
-    ${DIAMOND(560, 44, '#ffc400')}
-    ${DIAMOND(600, 96, '#ff3b30')}
-    ${DIAMOND(524, 118, '#2f9bff')}
-
-    <text x="46" y="86" font-family="${DISPLAY}" font-size="62" font-weight="800" letter-spacing="-2.4" fill="${CREAM}">See the work</text>
-    <text x="50" y="120" font-family="${MONO}" font-size="15" font-weight="700" letter-spacing="2" fill="#ffc400">${URL_TEXT}</text>
-
-    <g transform="translate(1064,84)">
-      <circle r="52" fill="#ffc400" stroke="${CREAM}" stroke-width="4"/>
-      <g stroke="${INK}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
-        <path d="M-16,16 L16,-16 M-6,-16 L16,-16 L16,6"/>
-        <animateTransform attributeName="transform" type="translate"
-          values="0,0; 7,-7; 0,0" dur="2.4s" repeatCount="indefinite"
-          calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/>
-      </g>
-    </g>
-
-    <rect x="8" y="${CTAH - 58}" width="1176" height="42" fill="#ffc400"/>
-    <g clip-path="url(#band)">
-      <g font-family="${MONO}" font-size="16" font-weight="700" letter-spacing="3" fill="${INK}">
-        <text x="0" y="${CTAH - 30}">${strip}</text>
-        <text x="${stripW}" y="${CTAH - 30}">${strip}</text>
-        <animateTransform attributeName="transform" type="translate"
-          values="0,0; -${stripW},0" dur="${(stripW / 58).toFixed(1)}s" repeatCount="indefinite"/>
-      </g>
-    </g>
-  </g>
-
-  <rect x="8" y="6" width="1176" height="${CTAH - 22}" rx="24" fill="none" stroke="${CREAM}" stroke-width="5"/>
-</svg>
-`;
-writeFileSync(`${OUT}/cta.svg`, cta);
-console.log('wrote cta.svg');
+console.log(`header, cta, ${cards.length} cards, ${SECTIONS.length} rules, toolkit(${TH}), languages, timeline`);
+console.log(`inlined ${slugs.length} brand marks · ${MAJOR.length} languages over 1% across ${repoLangs.totalCount} repos`);
