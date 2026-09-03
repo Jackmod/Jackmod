@@ -1,21 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250" fill="none" role="img" aria-label="Portfolio">
   <rect x="10" y="11" width="388" height="238" rx="22" fill="#12100c"/>
   <rect x="2" y="2" width="388" height="238" rx="22" fill="#a855f7" stroke="#12100c" stroke-width="5"/>
-
   <text x="26" y="46" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#fbf4e2" opacity="0.62">04</text>
-
   <g transform="translate(362,38)">
     <circle r="19" fill="#fbf4e2"/>
     <path d="M-6,6 L6,-6 M-2,-6 L6,-6 L6,2" stroke="#12100c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </g>
-
   <text x="26" y="104" font-family="'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="42" font-weight="800" letter-spacing="-1.6" fill="#fbf4e2">Portfolio</text>
-
   <text x="26" y="140" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" fill="#fbf4e2" opacity="0.62">Eight case studies behind a</text>
   <text x="26" y="160" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" fill="#fbf4e2" opacity="0.62">horizontal, scroll-driven view.</text>
-
   <text x="26" y="190" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" fill="#fbf4e2">A WebGL lens bends the grid.</text>
-
   <line x1="26" y1="204" x2="366" y2="204" stroke="#fbf4e2" stroke-opacity="0.28" stroke-width="2"/>
   <text x="26" y="224" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="700" letter-spacing="1.6" fill="#fbf4e2" opacity="0.62">TYPESCRIPT / REACT / THREE.JS</text>
 </svg>
