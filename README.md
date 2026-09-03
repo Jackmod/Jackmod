@@ -4,7 +4,15 @@
 
 Seventeen, in Seattle, shipping things people can actually open since 2021.
 
-<img src="./assets/sec-work.svg" alt="01 — Selected work" width="100%">
+<img src="./assets/sec-numbers.svg" alt="01 — The numbers" width="100%">
+
+<img src="./assets/stats.svg" alt="Contributions since 2021, public repos, shipped products, busiest day" width="100%">
+
+<img src="./assets/heatmap.svg" alt="Contribution heatmap for the last 12 months" width="100%">
+
+<img src="./assets/activity.svg" alt="Monthly contribution volume over the last 12 months" width="100%">
+
+<img src="./assets/sec-work.svg" alt="02 — Selected work" width="100%">
 
 <p>
 <a href="https://trace-rosy-one.vercel.app"><img src="./assets/card-trace.svg" alt="Trace — your screen as a physical lightbox" width="32.6%"></a>
@@ -14,14 +22,6 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 <a href="https://github.com/Jackmod/CRYPTONIX-DISCONTINUED"><img src="./assets/card-cryptonix.svg" alt="CRYPTONIX — Solana wallet tracker" width="32.6%"></a>
 <a href="https://github.com/Jackmod/DISPATCH"><img src="./assets/card-dispatch.svg" alt="DISPATCH — one-click installer for LSPDFR" width="32.6%"></a>
 </p>
-
-<img src="./assets/sec-numbers.svg" alt="02 — The numbers" width="100%">
-
-<img src="./assets/stats.svg" alt="Contributions since 2021, public repos, shipped products, busiest day" width="100%">
-
-<img src="./assets/heatmap.svg" alt="Contribution heatmap for the last 12 months" width="100%">
-
-<img src="./assets/activity.svg" alt="Monthly contribution volume over the last 12 months" width="100%">
 
 <img src="./assets/sec-run.svg" alt="03 — The 2026 run" width="100%">
 

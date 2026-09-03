@@ -170,8 +170,8 @@ function sectionBar(num, title, meta, accent) {
 }
 
 const SECTIONS = [
-  ['sec-work',     '01', 'SELECTED WORK',  'SIX SHIPPED · EVERY CARD IS A LINK', '#ffc400'],
-  ['sec-numbers',  '02', 'THE NUMBERS',    'REBUILT EVERY MORNING BY WORKFLOW',  '#3ddc84'],
+  ['sec-numbers',  '01', 'THE NUMBERS',    'REBUILT EVERY MORNING BY WORKFLOW',  '#3ddc84'],
+  ['sec-work',     '02', 'SELECTED WORK',  'SIX SHIPPED · EVERY CARD IS A LINK', '#ffc400'],
   ['sec-run',      '03', 'THE 2026 RUN',   'REAL DATES, FROM THE API',           '#2f9bff'],
   ['sec-stack',    '04', 'THE STACK',      'WHAT I REACH FOR, AND WHAT I WROTE', '#ff3b30'],
 ];
