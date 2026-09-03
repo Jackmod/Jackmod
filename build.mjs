@@ -148,6 +148,38 @@ writeFileSync(`${OUT}/toolkit.svg`, card(1200, TH, head + body, { id: 't' }));
 
 console.log(`wrote ${cards.length} cards + toolkit.svg (h=${TH})`);
 
+/* ------------------------------------------------------------------ sections */
+
+/**
+ * Section rules.
+ *
+ * Eight full-width cards stacked at the same weight read as a pile of widgets
+ * with no way in. These are the wayfinding: ink bars that alternate against the
+ * cream cards, numbered so the page has an order rather than just a length.
+ */
+function sectionBar(num, title, meta, accent) {
+  const h = 66;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="${h}" viewBox="0 0 1200 ${h}" fill="none" role="img" aria-label="${esc(num)} ${esc(title)}">
+  <rect x="8" y="6" width="1176" height="46" rx="23" fill="${INK}" stroke="${CREAM}" stroke-width="3.5"/>
+  <circle cx="1136" cy="29" r="5" fill="${accent}"/>
+  <text x="34" y="35" font-family="${MONO}" font-size="13" font-weight="700" letter-spacing="2" fill="${accent}">${esc(num)}</text>
+  <text x="72" y="35" font-family="${MONO}" font-size="13" font-weight="700" letter-spacing="3.4" fill="${CREAM}">${esc(title)}</text>
+  <text x="1118" y="35" text-anchor="end" font-family="${MONO}" font-size="11.5" letter-spacing="1.8" fill="${CREAM}" opacity="0.5">${esc(meta)}</text>
+</svg>
+`;
+}
+
+const SECTIONS = [
+  ['sec-work',     '01', 'SELECTED WORK',  'SIX SHIPPED · EVERY CARD IS A LINK', '#ffc400'],
+  ['sec-numbers',  '02', 'THE NUMBERS',    'REBUILT EVERY MORNING BY WORKFLOW',  '#3ddc84'],
+  ['sec-run',      '03', 'THE 2026 RUN',   'REAL DATES, FROM THE API',           '#2f9bff'],
+  ['sec-stack',    '04', 'THE STACK',      'WHAT I REACH FOR, AND WHAT I WROTE', '#ff3b30'],
+];
+for (const [id, num, title, meta, accent] of SECTIONS) {
+  writeFileSync(`${OUT}/${id}.svg`, sectionBar(num, title, meta, accent));
+}
+console.log(`wrote ${SECTIONS.length} section rules`);
+
 /* ----------------------------------------------------------------- languages */
 
 /**

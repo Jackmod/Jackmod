@@ -10,10 +10,10 @@
     <text x="42" y="40" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="2.6" fill="#12100c">WHAT THE BYTES SAY &#183; 27 REPOS</text>
     <defs><clipPath id="lbar"><rect x="0" y="52" width="1116" height="30" rx="15"/></clipPath></defs>
     <g clip-path="url(#lbar)" transform="translate(42,0)">
-      <rect x="0" y="52" width="752" height="30" fill="#f7df1e"/>
-      <rect x="752" y="52" width="167" height="30" fill="#a855f7"/>
-      <rect x="919" y="52" width="75" height="30" fill="#2f9bff"/>
-      <rect x="994" y="52" width="63" height="30" fill="#3ddc84"/>
+      <rect x="0" y="52" width="753" height="30" fill="#f7df1e"/>
+      <rect x="753" y="52" width="167" height="30" fill="#a855f7"/>
+      <rect x="920" y="52" width="75" height="30" fill="#2f9bff"/>
+      <rect x="995" y="52" width="62" height="30" fill="#3ddc84"/>
       <rect x="1057" y="52" width="31" height="30" fill="#ff3b30"/>
       <rect x="1088" y="52" width="26" height="30" fill="#4b8bbe"/>
       <rect x="1114" y="52" width="2" height="30" fill="#8a8578"/>
@@ -23,15 +23,15 @@
     </g>
     <rect x="42" y="52" width="1116" height="30" rx="15" fill="none" stroke="#12100c" stroke-width="4"/>
     <rect x="42" y="102" width="14" height="14" rx="4" fill="#f7df1e" stroke="#12100c" stroke-width="2.5"/>
-    <text x="64" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">JavaScript 67.4%</text>
+    <text x="64" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">JavaScript 67.5%</text>
     <rect x="204.4" y="102" width="14" height="14" rx="4" fill="#a855f7" stroke="#12100c" stroke-width="2.5"/>
-    <text x="226.4" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">CSS 15.0%</text>
+    <text x="226.4" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">CSS 14.9%</text>
     <rect x="311.5" y="102" width="14" height="14" rx="4" fill="#2f9bff" stroke="#12100c" stroke-width="2.5"/>
     <text x="333.5" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">TypeScript 6.7%</text>
     <rect x="466" y="102" width="14" height="14" rx="4" fill="#3ddc84" stroke="#12100c" stroke-width="2.5"/>
     <text x="488" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">C# 5.6%</text>
     <rect x="557.3" y="102" width="14" height="14" rx="4" fill="#ff3b30" stroke="#12100c" stroke-width="2.5"/>
-    <text x="579.3" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">HTML 2.8%</text>
+    <text x="579.3" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">HTML 2.7%</text>
     <rect x="664.4" y="102" width="14" height="14" rx="4" fill="#4b8bbe" stroke="#12100c" stroke-width="2.5"/>
     <text x="686.4" y="114" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="600" fill="#12100c">Python 2.3%</text>
     <rect x="787.3" y="102" width="14" height="14" rx="4" fill="#8a8578" stroke="#12100c" stroke-width="2.5"/>

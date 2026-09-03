@@ -4,13 +4,7 @@
 
 Seventeen, in Seattle, shipping things people can actually open since 2021.
 
-<img src="./assets/stats.svg" alt="710 contributions since 2021 · 12 public repos · 4 things you can use · busiest day" width="100%">
-
-<img src="./assets/heatmap.svg" alt="Contribution heatmap for the last 12 months" width="100%">
-
-<img src="./assets/activity.svg" alt="Monthly contribution volume over the last 12 months" width="100%">
-
-<img src="./assets/timeline.svg" alt="Nine projects shipped between April and September 2026" width="100%">
+<img src="./assets/sec-work.svg" alt="01 — Selected work" width="100%">
 
 <p>
 <a href="https://trace-rosy-one.vercel.app"><img src="./assets/card-trace.svg" alt="Trace — your screen as a physical lightbox" width="32.6%"></a>
@@ -20,6 +14,20 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 <a href="https://github.com/Jackmod/CRYPTONIX-DISCONTINUED"><img src="./assets/card-cryptonix.svg" alt="CRYPTONIX — Solana wallet tracker" width="32.6%"></a>
 <a href="https://github.com/Jackmod/DISPATCH"><img src="./assets/card-dispatch.svg" alt="DISPATCH — one-click installer for LSPDFR" width="32.6%"></a>
 </p>
+
+<img src="./assets/sec-numbers.svg" alt="02 — The numbers" width="100%">
+
+<img src="./assets/stats.svg" alt="Contributions since 2021, public repos, shipped products, busiest day" width="100%">
+
+<img src="./assets/heatmap.svg" alt="Contribution heatmap for the last 12 months" width="100%">
+
+<img src="./assets/activity.svg" alt="Monthly contribution volume over the last 12 months" width="100%">
+
+<img src="./assets/sec-run.svg" alt="03 — The 2026 run" width="100%">
+
+<img src="./assets/timeline.svg" alt="Nine projects shipped between April and September 2026" width="100%">
+
+<img src="./assets/sec-stack.svg" alt="04 — The stack" width="100%">
 
 <img src="./assets/toolkit.svg" alt="Toolkit — languages, interface, backend and daily tools" width="100%">
 
@@ -32,7 +40,7 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 <a href="https://xtsy-portfolio.vercel.app"><img src="./assets/cta.svg" alt="See the work at xtsy-portfolio.vercel.app" width="100%"></a>
 
 <div align="center">
-<sub>The heatmap, the metrics and the year chart redraw themselves every morning — <a href="https://github.com/Jackmod/Jackmod/blob/master/.github/workflows/refresh.yml">a workflow</a> rebuilds them from the API.</sub>
+<sub>The metrics, heatmap and year chart redraw themselves each morning — <a href="https://github.com/Jackmod/Jackmod/blob/master/.github/workflows/refresh.yml">a workflow</a> rebuilds them from the API.</sub>
 <br><br>
 <sub>Open to work &nbsp;·&nbsp; Seattle, WA</sub>
 </div>

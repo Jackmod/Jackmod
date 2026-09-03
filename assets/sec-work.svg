@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="66" viewBox="0 0 1200 66" fill="none" role="img" aria-label="01 SELECTED WORK">
+  <rect x="8" y="6" width="1176" height="46" rx="23" fill="#12100c" stroke="#fbf4e2" stroke-width="3.5"/>
+  <circle cx="1136" cy="29" r="5" fill="#ffc400"/>
+  <text x="34" y="35" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#ffc400">01</text>
+  <text x="72" y="35" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" letter-spacing="3.4" fill="#fbf4e2">SELECTED WORK</text>
+  <text x="1118" y="35" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11.5" letter-spacing="1.8" fill="#fbf4e2" opacity="0.5">SIX SHIPPED · EVERY CARD IS A LINK</text>
+</svg>
