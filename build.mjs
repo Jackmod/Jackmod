@@ -5,7 +5,7 @@
  * this reads private repositories too, which the token inside Actions cannot.
  */
 import { writeFileSync } from 'fs';
-import { OUT, INK, CREAM, MONO, DISPLAY, esc, card } from './lib.mjs';
+import { OUT, INK, CREAM, MONO, DISPLAY, esc, card, gql } from './lib.mjs';
 
 /* ---------------------------------------------------------------- project cards */
 
@@ -147,6 +147,73 @@ const head = `    <text x="${PAD}" y="44" font-family="${MONO}" font-size="12.5"
 writeFileSync(`${OUT}/toolkit.svg`, card(1200, TH, head + body, { id: 't' }));
 
 console.log(`wrote ${cards.length} cards + toolkit.svg (h=${TH})`);
+
+/* ----------------------------------------------------------------- languages */
+
+/**
+ * Byte share across every repository I own, counted rather than claimed.
+ *
+ * Lives here and not in refresh.mjs because it reads private repositories,
+ * which the token inside Actions cannot see — running it there would quietly
+ * publish a different, smaller picture every morning.
+ */
+const repoLangs = gql(`query {
+  user(login: "Jackmod") {
+    repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
+      totalCount
+      nodes { languages(first: 12) { edges { size node { name color } } } }
+    }
+  }
+}`).user.repositories;
+
+const totals = new Map();
+for (const r of repoLangs.nodes) {
+  for (const e of r.languages.edges) {
+    totals.set(e.node.name, (totals.get(e.node.name) ?? 0) + e.size);
+  }
+}
+const grand = [...totals.values()].reduce((a, b) => a + b, 0);
+const ranked = [...totals.entries()].sort((a, b) => b[1] - a[1]);
+
+// Anything under 1% becomes one honest "and the rest" block instead of slivers
+// too thin to see and a legend nobody can read.
+const MAJOR = ranked.filter(([, v]) => v / grand >= 0.01);
+const restPct = 100 - MAJOR.reduce((s, [, v]) => s + (v / grand) * 100, 0);
+
+const SWATCH = { JavaScript: '#f7df1e', CSS: '#a855f7', TypeScript: '#2f9bff', 'C#': '#3ddc84', Python: '#4b8bbe', HTML: '#ff3b30', PowerShell: '#5391FE', Rust: '#ff8a1f', Shell: '#89e051', PLpgSQL: '#336790' };
+const swatch = (n, i) => SWATCH[n] ?? ['#8a8578', '#c2b8a3', '#6b6455'][i % 3];
+
+const LW = 1116, LX = 42;
+let segs = '', legend = '', cursor = 0, lx2 = LX;
+MAJOR.forEach(([name, v], i) => {
+  const pct = (v / grand) * 100;
+  const w = Math.round((pct / 100) * LW);
+  segs += `      <rect x="${cursor}" y="52" width="${w}" height="30" fill="${swatch(name, i)}"/>\n`;
+  cursor += w;
+  const text = `${name} ${pct.toFixed(1)}%`;
+  legend += `    <rect x="${lx2}" y="102" width="14" height="14" rx="4" fill="${swatch(name, i)}" stroke="${INK}" stroke-width="2.5"/>
+    <text x="${lx2 + 22}" y="114" font-family="${MONO}" font-size="13" font-weight="600" fill="${INK}">${esc(text)}</text>\n`;
+  lx2 += 36 + text.length * 7.9;
+});
+if (restPct > 0.05) {
+  segs += `      <rect x="${cursor}" y="52" width="${LW - cursor}" height="30" fill="#8a8578"/>\n`;
+  legend += `    <rect x="${lx2}" y="102" width="14" height="14" rx="4" fill="#8a8578" stroke="${INK}" stroke-width="2.5"/>
+    <text x="${lx2 + 22}" y="114" font-family="${MONO}" font-size="13" font-weight="600" fill="${INK}">the rest ${restPct.toFixed(1)}%</text>\n`;
+}
+
+const lhead = `    <text x="${LX}" y="40" font-family="${MONO}" font-size="12.5" font-weight="700" letter-spacing="2.6" fill="${INK}">WHAT THE BYTES SAY &#183; ${repoLangs.totalCount} REPOS</text>
+    <defs><clipPath id="lbar"><rect x="0" y="52" width="${LW}" height="30" rx="15"/></clipPath></defs>
+    <g clip-path="url(#lbar)" transform="translate(${LX},0)">
+${segs}      <rect x="-${LW}" y="52" width="${LW}" height="30" fill="${CREAM}">
+        <animate attributeName="x" values="0;-${LW}" dur="1.3s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1" keyTimes="0;1"/>
+      </rect>
+    </g>
+    <rect x="${LX}" y="52" width="${LW}" height="30" rx="15" fill="none" stroke="${INK}" stroke-width="4"/>\n`;
+
+const lfoot = `    <text x="${LX}" y="146" font-family="${MONO}" font-size="11.5" fill="#6b6455">Bytes reward whoever ships the most files, so this is honest rather than flattering. What I reach for is above.</text>\n`;
+
+writeFileSync(`${OUT}/languages.svg`, card(1200, 176, lhead + legend + lfoot, { id: 'g' }));
+console.log(`languages: ${MAJOR.length} over 1% across ${repoLangs.totalCount} repos, ${(grand / 1048576).toFixed(1)} MB counted`);
 
 /* ------------------------------------------------------------------ timeline */
 

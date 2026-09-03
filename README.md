@@ -23,7 +23,7 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 
 <img src="./assets/toolkit.svg" alt="Toolkit — languages, interface, backend and daily tools" width="100%">
 
-<img src="./assets/languages.svg" alt="Language share by bytes across 17 repositories" width="100%">
+<img src="./assets/languages.svg" alt="Language share by bytes across every repository I own" width="100%">
 
 <br>
 
