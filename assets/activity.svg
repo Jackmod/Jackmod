@@ -50,7 +50,7 @@
     <text x="1005" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">AUG</text>
     <rect x="1063" y="128" width="64" height="68" rx="7" fill="#6C8BFF"/>
     <rect x="1063" y="128" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
-    <text x="1095" y="116" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">96</text>
+    <text x="1095" y="116" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">97</text>
     <text x="1095" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">SEP</text>
   </g>
   <rect x="1" y="1" width="1198" height="248" rx="16" fill="none" stroke="#272D36" stroke-width="1.5"/>
