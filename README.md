@@ -1,6 +1,6 @@
 <img src="./assets/header.svg" alt="xtsy — full-stack developer and UI designer" width="100%">
 
-**I'm Jack. I go by xtsy.** I build tools where the interface *is* the product — the kind where the whole idea falls apart if the pixels are wrong.
+**I'm Jack. I go by xtsy.** I build tools.
 
 Seventeen, in Seattle, shipping things people can actually open since 2021.
 
@@ -36,8 +36,6 @@ Seventeen, in Seattle, shipping things people can actually open since 2021.
 <img src="./assets/languages.svg" alt="Language share by bytes across every repository I own" width="100%">
 
 <br>
-
-**How I work.** The detail is the job — a 3% scale pop on a scrolling thumbnail is a bug, and I'll lose an afternoon proving where it came from. I measure rather than eyeball; if I say it's fixed, there are numbers out of a real browser behind it. I read the source instead of guessing, because it's faster every time. Then I ship it and look at it on a real device, because localhost lies.
 
 <div align="center">
 <br>
