@@ -2,13 +2,19 @@ name: Refresh live cards
 
 # The heatmap and the metric tiles are committed SVGs, so without this they
 # freeze on whatever day they were last built. This redraws them from the API
-# each morning and commits only when the pixels actually changed.
+# and commits only when the pixels actually changed.
+#
+# Every four hours rather than daily. A run costs about twenty seconds and
+# Actions is free on public repositories, so the only thing a longer interval
+# buys is a staler card. GitHub also queues scheduled workflows and can delay
+# them by tens of minutes under load — running six times a day means a skipped
+# slot is invisible instead of costing a full day.
 
 on:
   schedule:
-    # 07:12 UTC. Off the hour on purpose — the top of the hour is when every
-    # scheduled workflow on GitHub fires at once and the queue backs up.
-    - cron: '12 7 * * *'
+    # Off the hour on purpose: the top of the hour is when every scheduled
+    # workflow on GitHub fires at once and the queue backs up.
+    - cron: '17 */4 * * *'
   workflow_dispatch:
   push:
     branches: [master]
