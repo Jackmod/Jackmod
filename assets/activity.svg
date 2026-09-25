@@ -12,7 +12,7 @@
     <rect x="1" y="1" width="1198" height="248" fill="#14171C"/>
     <rect x="1" y="1" width="1198" height="1.5" fill="url(#lit-a)"/>
     <text x="42" y="44" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="3" fill="#F3F5F4">THE SHAPE OF THE YEAR</text>
-    <text x="1150" y="44" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="#8A939E">BUSIEST MONTH &#183; 2026-09 &#183; 267 CONTRIBUTIONS</text>
+    <text x="1150" y="44" text-anchor="end" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" letter-spacing="1.6" fill="#8A939E">BUSIEST MONTH &#183; 2026-09 &#183; 268 CONTRIBUTIONS</text>
     <line x1="34" y1="196" x2="1166" y2="196" stroke="#272D36" stroke-width="1.5"/>
     <rect x="73" y="193" width="64" height="3" rx="1.5" fill="#1B2027"/>
     <text x="105" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#5A626C">OCT</text>
@@ -50,7 +50,7 @@
     <text x="1005" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">AUG</text>
     <rect x="1063" y="74" width="64" height="122" rx="7" fill="#35D6A4"/>
     <rect x="1063" y="74" width="64" height="2.5" rx="1.2" fill="#F3F5F4" opacity="0.5"/>
-    <text x="1095" y="62" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">267</text>
+    <text x="1095" y="62" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="600" fill="#F3F5F4">268</text>
     <text x="1095" y="220" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#8A939E">SEP</text>
   </g>
   <rect x="1" y="1" width="1198" height="248" rx="16" fill="none" stroke="#272D36" stroke-width="1.5"/>
